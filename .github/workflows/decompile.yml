@@ -1,0 +1,37 @@
+name: Auto Decompile APK
+
+on:
+  push:
+    paths:
+      - '**.apk' # Срабатывает только при загрузке или изменении APK
+
+permissions:
+  contents: write # Даем скрипту право записывать файлы в репозиторий
+
+jobs:
+  decompile:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Скачать код репозитория
+        uses: actions/checkout@v4
+
+      - name: Установить JADX
+        run: |
+          wget https://github.com
+          unzip jadx-1.5.0.zip -d jadx
+          chmod +x jadx/bin/jadx
+
+      - name: Декомпилировать все APK
+        run: |
+          for file in *.apk; do
+            [ -e "$file" ] || continue
+            ./jadx/bin/jadx -d "decompiled_${file%.apk}" "$file"
+          done
+
+      - name: Сохранить результат в репозиторий
+        run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
+          git add decompiled_*
+          git commit -m "Автоматическая декомпиляция APK" || exit 0
+          git push
