@@ -1,0 +1,35 @@
+package org.jetbrains.kotlin.fir.analysis.checkers.declaration;
+
+import kotlin.Metadata;
+import kotlin.jvm.internal.Intrinsics;
+import org.jetbrains.kotlin.config.CommonConfigurationKeysKt;
+import org.jetbrains.kotlin.config.LanguageFeature;
+import org.jetbrains.kotlin.diagnostics.AbstractSourceElementPositioningStrategy;
+import org.jetbrains.kotlin.diagnostics.DiagnosticReporter;
+import org.jetbrains.kotlin.diagnostics.KtDiagnosticReportHelpersKt;
+import org.jetbrains.kotlin.fir.analysis.checkers.context.CheckerContext;
+import org.jetbrains.kotlin.fir.analysis.diagnostics.FirErrors;
+import org.jetbrains.kotlin.fir.declarations.FirClassLikeDeclaration;
+
+/* JADX INFO: compiled from: FirExpectActualClassifiersAreInBetaChecker.kt */
+/* JADX INFO: loaded from: classes4.dex */
+@Metadata(d1 = {"\u0000(\n\u0002\u0018\u0002\n\u0002\u0018\u0002\n\u0002\u0018\u0002\n\u0002\u0018\u0002\n\u0002\b\u0002\n\u0002\u0010\u0002\n\u0002\b\u0002\n\u0002\u0018\u0002\n\u0000\n\u0002\u0018\u0002\n\u0000\bÆ\u0002\u0018\u00002\f\u0012\u0004\u0012\u00020\u00020\u0001j\u0002`\u0003B\u0007\b\u0002¢\u0006\u0002\u0010\u0004J \u0010\u0005\u001a\u00020\u00062\u0006\u0010\u0007\u001a\u00020\u00022\u0006\u0010\b\u001a\u00020\t2\u0006\u0010\n\u001a\u00020\u000bH\u0016¨\u0006\f"}, d2 = {"Lorg/jetbrains/kotlin/fir/analysis/checkers/declaration/FirExpectActualClassifiersAreInBetaChecker;", "Lorg/jetbrains/kotlin/fir/analysis/checkers/declaration/FirDeclarationChecker;", "Lorg/jetbrains/kotlin/fir/declarations/FirClassLikeDeclaration;", "Lorg/jetbrains/kotlin/fir/analysis/checkers/declaration/FirClassLikeChecker;", "()V", "check", "", "declaration", "context", "Lorg/jetbrains/kotlin/fir/analysis/checkers/context/CheckerContext;", "reporter", "Lorg/jetbrains/kotlin/diagnostics/DiagnosticReporter;", "checkers"}, k = 1, mv = {1, 9, 0}, xi = 48)
+public final class FirExpectActualClassifiersAreInBetaChecker extends FirDeclarationChecker<FirClassLikeDeclaration> {
+    public static final FirExpectActualClassifiersAreInBetaChecker INSTANCE = new FirExpectActualClassifiersAreInBetaChecker();
+
+    private FirExpectActualClassifiersAreInBetaChecker() {
+    }
+
+    @Override // org.jetbrains.kotlin.fir.analysis.checkers.declaration.FirDeclarationChecker
+    public void check(FirClassLikeDeclaration declaration, CheckerContext context, DiagnosticReporter reporter) {
+        Intrinsics.checkNotNullParameter(declaration, "declaration");
+        Intrinsics.checkNotNullParameter(context, "context");
+        Intrinsics.checkNotNullParameter(reporter, "reporter");
+        if (context.get$languageVersionSettings().supportsFeature(LanguageFeature.MultiPlatformProjects) && !CommonConfigurationKeysKt.getAreExpectActualClassesStable(context.get$languageVersionSettings())) {
+            FirClassLikeDeclaration firClassLikeDeclaration = declaration;
+            if (firClassLikeDeclaration.getStatus().isExpect() || firClassLikeDeclaration.getStatus().isActual()) {
+                KtDiagnosticReportHelpersKt.reportOn$default(reporter, declaration.getSource(), FirErrors.INSTANCE.getEXPECT_ACTUAL_CLASSIFIERS_ARE_IN_BETA_WARNING(), context, (AbstractSourceElementPositioningStrategy) null, 8, (Object) null);
+            }
+        }
+    }
+}

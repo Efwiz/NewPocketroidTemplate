@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:background="@drawable/bg_inspector_card"
+    android:padding="12dp"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="12dp">
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/editor_3d_model_file"
+        style="@style/InspectorLabel"/>
+    <TextView
+        android:textSize="14sp"
+        android:textColor="@color/solid_white"
+        android:id="@+id/text_model_path"
+        android:background="@drawable/bg_inspector_input"
+        android:padding="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="6dp"
+        android:text="@string/editor_3d_no_model_selected"/>
+    <Button
+        android:textColor="@color/app_background"
+        android:id="@+id/btn_select_model"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:text="@string/editor_3d_select_model"
+        android:backgroundTint="@color/accent"
+        style="@style/Widget.AppCompat.Button.Colored"/>
+</LinearLayout>

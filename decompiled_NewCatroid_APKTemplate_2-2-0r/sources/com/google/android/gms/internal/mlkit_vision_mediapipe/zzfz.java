@@ -1,0 +1,10 @@
+package com.google.android.gms.internal.mlkit_vision_mediapipe;
+
+/* JADX INFO: compiled from: com.google.mlkit:mediapipe-internal@@16.0.0 */
+/* JADX INFO: loaded from: classes9.dex */
+final class zzfz<K, V> {
+    public final zzig zza;
+    public final K zzb;
+    public final zzig zzc;
+    public final V zzd;
+}

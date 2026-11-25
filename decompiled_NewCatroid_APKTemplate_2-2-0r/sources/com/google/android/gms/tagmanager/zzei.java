@@ -1,0 +1,11 @@
+package com.google.android.gms.tagmanager;
+
+/* JADX INFO: compiled from: com.google.android.gms:play-services-tagmanager-v4-impl@@17.0.1 */
+/* JADX INFO: loaded from: classes9.dex */
+final class zzei {
+    final /* synthetic */ zzej zza;
+
+    zzei(zzej zzejVar) {
+        this.zza = zzejVar;
+    }
+}

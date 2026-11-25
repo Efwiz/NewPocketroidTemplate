@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:id="@+id/pocketpaint_zoom_window"
+    android:visibility="gone"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <ImageView
+        android:id="@+id/pocketpaint_zoom_window_image"
+        android:background="@drawable/pocketpaint_zoom_window_shape"
+        android:padding="3dp"
+        android:layout_width="@dimen/pocketpaint_zoom_window_diameter"
+        android:layout_height="@dimen/pocketpaint_zoom_window_diameter"
+        android:layout_marginTop="50dp"
+        android:contentDescription="@string/zoom_window_description"
+        android:layout_marginHorizontal="10dp"/>
+</RelativeLayout>

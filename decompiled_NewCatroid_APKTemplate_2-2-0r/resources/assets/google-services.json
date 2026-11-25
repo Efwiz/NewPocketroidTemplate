@@ -1,0 +1,30 @@
+{
+  "project_info": {
+    "project_number": "557554629061",
+    "firebase_url": "https://testsnewcatroid-default-rtdb.firebaseio.com",
+    "project_id": "testsnewcatroid",
+    "storage_bucket": "testsnewcatroid.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:557554629061:android:2493dc6f65994e6f33b3ac",
+        "android_client_info": {
+          "package_name": "com.DanVexTeam.NewCatroid"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAqu9bj7j43OEkWuMXmcapUYR7awwmmEZk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

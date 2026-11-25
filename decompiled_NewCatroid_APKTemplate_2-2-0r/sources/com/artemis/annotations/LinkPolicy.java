@@ -1,0 +1,20 @@
+package com.artemis.annotations;
+
+import java.lang.annotation.ElementType;
+import java.lang.annotation.Retention;
+import java.lang.annotation.RetentionPolicy;
+import java.lang.annotation.Target;
+
+/* JADX INFO: loaded from: classes8.dex */
+@Target({ElementType.FIELD})
+@Retention(RetentionPolicy.RUNTIME)
+public @interface LinkPolicy {
+
+    public enum Policy {
+        SKIP,
+        CHECK_SOURCE,
+        CHECK_SOURCE_AND_TARGETS
+    }
+
+    Policy value();
+}

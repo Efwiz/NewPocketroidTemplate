@@ -1,0 +1,66 @@
+package androidx.camera.core;
+
+import android.graphics.PointF;
+import android.view.Display;
+import androidx.camera.core.impl.CameraInfoInternal;
+
+/* JADX INFO: loaded from: classes.dex */
+public final class DisplayOrientedMeteringPointFactory extends MeteringPointFactory {
+    private final CameraInfoInternal mCameraInfo;
+    private final CameraSelector mCameraSelector;
+    private final Display mDisplay;
+    private final float mHeight;
+    private final float mWidth;
+
+    public DisplayOrientedMeteringPointFactory(Display display, CameraSelector cameraSelector, float f, float f2) {
+        this.mWidth = f;
+        this.mHeight = f2;
+        this.mCameraSelector = cameraSelector;
+        this.mDisplay = display;
+        try {
+            this.mCameraInfo = CameraX.getCameraWithCameraSelector(cameraSelector).getCameraInfoInternal();
+        } catch (IllegalArgumentException e) {
+            throw new IllegalArgumentException("Unable to get camera id for the CameraSelector.", e);
+        }
+    }
+
+    private Integer getLensFacing() {
+        return this.mCameraInfo.getLensFacing();
+    }
+
+    @Override // androidx.camera.core.MeteringPointFactory
+    protected PointF convertPoint(float f, float f2) {
+        float f3 = this.mWidth;
+        float f4 = this.mHeight;
+        Integer lensFacing = getLensFacing();
+        boolean z = lensFacing != null && lensFacing.intValue() == 0;
+        int relativeCameraOrientation = getRelativeCameraOrientation(z);
+        if (relativeCameraOrientation != 90 && relativeCameraOrientation != 270) {
+            f2 = f;
+            f = f2;
+            f4 = f3;
+            f3 = f4;
+        }
+        if (relativeCameraOrientation == 90) {
+            f = f3 - f;
+        } else if (relativeCameraOrientation == 180) {
+            f2 = f4 - f2;
+            f = f3 - f;
+        } else if (relativeCameraOrientation == 270) {
+            f2 = f4 - f2;
+        }
+        if (z) {
+            f2 = f4 - f2;
+        }
+        return new PointF(f2 / f4, f / f3);
+    }
+
+    private int getRelativeCameraOrientation(boolean z) {
+        try {
+            int sensorRotationDegrees = this.mCameraInfo.getSensorRotationDegrees(this.mDisplay.getRotation());
+            return z ? (360 - sensorRotationDegrees) % 360 : sensorRotationDegrees;
+        } catch (Exception unused) {
+            return 0;
+        }
+    }
+}

@@ -1,0 +1,31 @@
+package org.jetbrains.kotlin.cli.common.extensions;
+
+import kotlin.Metadata;
+import org.jetbrains.kotlin.cli.common.ExitCode;
+import org.jetbrains.kotlin.cli.common.arguments.CommonCompilerArguments;
+import org.jetbrains.kotlin.cli.jvm.compiler.KotlinCoreEnvironment;
+import org.jetbrains.kotlin.config.CompilerConfiguration;
+import org.jetbrains.kotlin.extensions.ProjectExtensionDescriptor;
+
+/* JADX INFO: compiled from: ScriptEvaluationExtension.kt */
+/* JADX INFO: loaded from: classes3.dex */
+@Metadata(d1 = {"\u0000*\n\u0002\u0018\u0002\n\u0002\u0010\u0000\n\u0000\n\u0002\u0018\u0002\n\u0000\n\u0002\u0018\u0002\n\u0000\n\u0002\u0018\u0002\n\u0000\n\u0002\u0018\u0002\n\u0000\n\u0002\u0010\u000b\n\u0002\b\u0002\bf\u0018\u0000 \f2\u00020\u0001:\u0001\fJ \u0010\u0002\u001a\u00020\u00032\u0006\u0010\u0004\u001a\u00020\u00052\u0006\u0010\u0006\u001a\u00020\u00072\u0006\u0010\b\u001a\u00020\tH&J\u0010\u0010\n\u001a\u00020\u000b2\u0006\u0010\u0004\u001a\u00020\u0005H&ø\u0001\u0000\u0082\u0002\u0006\n\u0004\b!0\u0001¨\u0006\rÀ\u0006\u0001"}, d2 = {"Lorg/jetbrains/kotlin/cli/common/extensions/ScriptEvaluationExtension;", "", "eval", "Lorg/jetbrains/kotlin/cli/common/ExitCode;", "arguments", "Lorg/jetbrains/kotlin/cli/common/arguments/CommonCompilerArguments;", "configuration", "Lorg/jetbrains/kotlin/config/CompilerConfiguration;", "projectEnvironment", "Lorg/jetbrains/kotlin/cli/jvm/compiler/KotlinCoreEnvironment$ProjectEnvironment;", "isAccepted", "", "Companion", "cli-base"}, k = 1, mv = {1, 9, 0}, xi = 48)
+public interface ScriptEvaluationExtension {
+
+    /* JADX INFO: renamed from: Companion, reason: from kotlin metadata */
+    public static final Companion INSTANCE = Companion.$$INSTANCE;
+
+    ExitCode eval(CommonCompilerArguments arguments, CompilerConfiguration configuration, KotlinCoreEnvironment.ProjectEnvironment projectEnvironment);
+
+    boolean isAccepted(CommonCompilerArguments arguments);
+
+    /* JADX INFO: compiled from: ScriptEvaluationExtension.kt */
+    @Metadata(d1 = {"\u0000\u0010\n\u0002\u0018\u0002\n\u0002\u0018\u0002\n\u0002\u0018\u0002\n\u0002\b\u0002\b\u0086\u0003\u0018\u00002\b\u0012\u0004\u0012\u00020\u00020\u0001B\u0007\b\u0002¢\u0006\u0002\u0010\u0003¨\u0006\u0004"}, d2 = {"Lorg/jetbrains/kotlin/cli/common/extensions/ScriptEvaluationExtension$Companion;", "Lorg/jetbrains/kotlin/extensions/ProjectExtensionDescriptor;", "Lorg/jetbrains/kotlin/cli/common/extensions/ScriptEvaluationExtension;", "()V", "cli-base"}, k = 1, mv = {1, 9, 0}, xi = 48)
+    public static final class Companion extends ProjectExtensionDescriptor<ScriptEvaluationExtension> {
+        static final /* synthetic */ Companion $$INSTANCE = new Companion();
+
+        private Companion() {
+            super("org.jetbrains.kotlin.scriptEvaluationExtension", ScriptEvaluationExtension.class);
+        }
+    }
+}

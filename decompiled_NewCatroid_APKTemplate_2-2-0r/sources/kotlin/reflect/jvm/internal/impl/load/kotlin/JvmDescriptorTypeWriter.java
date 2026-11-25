@@ -1,0 +1,44 @@
+package kotlin.reflect.jvm.internal.impl.load.kotlin;
+
+import kotlin.jvm.internal.Intrinsics;
+import kotlin.reflect.jvm.internal.impl.name.Name;
+import kotlin.text.StringsKt;
+
+/* JADX INFO: compiled from: typeSignatureMapping.kt */
+/* JADX INFO: loaded from: classes12.dex */
+public class JvmDescriptorTypeWriter<T> {
+    private T jvmCurrentType;
+    private int jvmCurrentTypeArrayLevel;
+    private final JvmTypeFactory<T> jvmTypeFactory;
+
+    public void writeArrayEnd() {
+    }
+
+    public void writeArrayType() {
+        if (this.jvmCurrentType == null) {
+            this.jvmCurrentTypeArrayLevel++;
+        }
+    }
+
+    public void writeClass(T objectType) {
+        Intrinsics.checkNotNullParameter(objectType, "objectType");
+        writeJvmTypeAsIs(objectType);
+    }
+
+    protected final void writeJvmTypeAsIs(T type) {
+        Intrinsics.checkNotNullParameter(type, "type");
+        if (this.jvmCurrentType == null) {
+            int i = this.jvmCurrentTypeArrayLevel;
+            if (i > 0) {
+                type = this.jvmTypeFactory.createFromString(Intrinsics.stringPlus(StringsKt.repeat("[", i), this.jvmTypeFactory.toString(type)));
+            }
+            this.jvmCurrentType = type;
+        }
+    }
+
+    public void writeTypeVariable(Name name2, T type) {
+        Intrinsics.checkNotNullParameter(name2, "name");
+        Intrinsics.checkNotNullParameter(type, "type");
+        writeJvmTypeAsIs(type);
+    }
+}

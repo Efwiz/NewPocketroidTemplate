@@ -1,0 +1,56 @@
+package org.jetbrains.kotlin.kotlinx.collections.immutable.implementations.persistentOrderedMap;
+
+import androidx.exifinterface.media.ExifInterface;
+import java.util.Iterator;
+import java.util.Map;
+import java.util.NoSuchElementException;
+import kotlin.Metadata;
+import kotlin.jvm.internal.Intrinsics;
+import kotlin.jvm.internal.markers.KMappedMarker;
+import org.jetbrains.kotlin.codegen.inline.ReifiedTypeInliner;
+import org.mozilla.javascript.ES6Iterator;
+
+/* JADX INFO: compiled from: PersistentOrderedMapContentIterators.kt */
+/* JADX INFO: loaded from: classes5.dex */
+@Metadata(bv = {1, 0, 3}, d1 = {"\u00000\n\u0002\u0018\u0002\n\u0002\b\u0002\n\u0002\u0010(\n\u0002\u0018\u0002\n\u0000\n\u0002\u0010\u0000\n\u0000\n\u0002\u0010$\n\u0002\b\u0002\n\u0002\u0010\b\n\u0002\b\t\n\u0002\u0010\u000b\n\u0002\b\u0002\b\u0010\u0018\u0000*\u0004\b\u0000\u0010\u0001*\u0004\b\u0001\u0010\u00022\u000e\u0012\n\u0012\b\u0012\u0004\u0012\u0002H\u00020\u00040\u0003B)\u0012\b\u0010\u0005\u001a\u0004\u0018\u00010\u0006\u0012\u0018\u0010\u0007\u001a\u0014\u0012\u0004\u0012\u00028\u0000\u0012\n\u0012\b\u0012\u0004\u0012\u00028\u00010\u00040\b¢\u0006\u0002\u0010\tJ\t\u0010\u0014\u001a\u00020\u0015H\u0096\u0002J\u000f\u0010\u0016\u001a\b\u0012\u0004\u0012\u00028\u00010\u0004H\u0096\u0002R \u0010\u0007\u001a\u0014\u0012\u0004\u0012\u00028\u0000\u0012\n\u0012\b\u0012\u0004\u0012\u00028\u00010\u00040\bX\u0082\u0004¢\u0006\u0002\n\u0000R\u001a\u0010\n\u001a\u00020\u000bX\u0080\u000e¢\u0006\u000e\n\u0000\u001a\u0004\b\f\u0010\r\"\u0004\b\u000e\u0010\u000fR\u001c\u0010\u0005\u001a\u0004\u0018\u00010\u0006X\u0080\u000e¢\u0006\u000e\n\u0000\u001a\u0004\b\u0010\u0010\u0011\"\u0004\b\u0012\u0010\u0013¨\u0006\u0017"}, d2 = {"Lorg/jetbrains/kotlin/kotlinx/collections/immutable/implementations/persistentOrderedMap/PersistentOrderedMapLinksIterator;", "K", ExifInterface.GPS_MEASUREMENT_INTERRUPTED, "", "Lorg/jetbrains/kotlin/kotlinx/collections/immutable/implementations/persistentOrderedMap/LinkedValue;", "nextKey", "", "hashMap", "", "(Ljava/lang/Object;Ljava/util/Map;)V", "index", "", "getIndex$kotlinx_collections_immutable", "()I", "setIndex$kotlinx_collections_immutable", "(I)V", "getNextKey$kotlinx_collections_immutable", "()Ljava/lang/Object;", "setNextKey$kotlinx_collections_immutable", ReifiedTypeInliner.pluginIntrinsicsMarkerSignature, "hasNext", "", ES6Iterator.NEXT_METHOD, "kotlinx-collections-immutable"}, k = 1, mv = {1, 1, 16})
+public class PersistentOrderedMapLinksIterator<K, V> implements Iterator<LinkedValue<V>>, KMappedMarker {
+    private final Map<K, LinkedValue<V>> hashMap;
+    private int index;
+    private Object nextKey;
+
+    @Override // java.util.Iterator
+    public void remove() {
+        throw new UnsupportedOperationException("Operation is not supported for read-only collection");
+    }
+
+    public PersistentOrderedMapLinksIterator(Object obj, Map<K, LinkedValue<V>> hashMap) {
+        Intrinsics.checkParameterIsNotNull(hashMap, "hashMap");
+        this.nextKey = obj;
+        this.hashMap = hashMap;
+    }
+
+    /* JADX INFO: renamed from: getNextKey$kotlinx_collections_immutable, reason: from getter */
+    public final Object getNextKey() {
+        return this.nextKey;
+    }
+
+    @Override // java.util.Iterator
+    public boolean hasNext() {
+        return this.index < this.hashMap.size();
+    }
+
+    @Override // java.util.Iterator
+    public LinkedValue<V> next() {
+        if (!hasNext()) {
+            throw new NoSuchElementException();
+        }
+        LinkedValue<V> linkedValue = this.hashMap.get(this.nextKey);
+        if (linkedValue == null) {
+            Intrinsics.throwNpe();
+        }
+        LinkedValue<V> linkedValue2 = linkedValue;
+        this.index++;
+        this.nextKey = linkedValue2.getNext();
+        return linkedValue2;
+    }
+}

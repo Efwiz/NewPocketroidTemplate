@@ -1,0 +1,17 @@
+package kotlin.math;
+
+import kotlin.Metadata;
+
+/* JADX WARN: Classes with same name are omitted, all sources:
+  NewCatroid_APKTemplate_2-2-0r.apk:assets/kotlin-stdlib-1.8.20.jar:kotlin/math/MathKt.class
+  classes10.dex
+ */
+/* JADX INFO: loaded from: classes10.dex */
+@Metadata(d1 = {"kotlin/math/MathKt__MathHKt", "kotlin/math/MathKt__MathJVMKt"}, k = 4, mv = {1, 9, 0}, xi = 49)
+public final class MathKt extends MathKt__MathJVMKt {
+    public static final double E = 2.718281828459045d;
+    public static final double PI = 3.141592653589793d;
+
+    private MathKt() {
+    }
+}

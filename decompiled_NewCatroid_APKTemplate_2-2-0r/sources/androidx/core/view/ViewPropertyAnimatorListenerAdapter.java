@@ -1,0 +1,23 @@
+package androidx.core.view;
+
+import android.view.View;
+
+/* JADX WARN: Classes with same name are omitted, all sources:
+  NewCatroid_APKTemplate_2-2-0r.apk:assets/core-1.8.0.aar:classes.jar:androidx/core/view/ViewPropertyAnimatorListenerAdapter.class
+  NewCatroid_APKTemplate_2-2-0r.apk:assets/core.jar:androidx/core/view/ViewPropertyAnimatorListenerAdapter.class
+  classes.dex
+ */
+/* JADX INFO: loaded from: classes.dex */
+public class ViewPropertyAnimatorListenerAdapter implements ViewPropertyAnimatorListener {
+    @Override // androidx.core.view.ViewPropertyAnimatorListener
+    public void onAnimationCancel(View view) {
+    }
+
+    @Override // androidx.core.view.ViewPropertyAnimatorListener
+    public void onAnimationEnd(View view) {
+    }
+
+    @Override // androidx.core.view.ViewPropertyAnimatorListener
+    public void onAnimationStart(View view) {
+    }
+}

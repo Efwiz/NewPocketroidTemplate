@@ -1,0 +1,51 @@
+package com.badlogic.gdx.physics.bullet.collision;
+
+/* JADX INFO: loaded from: classes8.dex */
+public final class ContactCallbackEvent {
+    public static final int BY_MANIFOLD = 4;
+    public static final int BY_MASK = 12;
+    public static final int BY_OBJECT = 8;
+    public static final int BY_VALUE = 12;
+    public static final int BY_WRAPPER = 4;
+    public static final int FILTERED = 1;
+    public static final int INCLUDE_POINT = 2;
+    public static final int ON_ADDED_FILTERED_OBJECT = 9;
+    public static final int ON_ADDED_FILTERED_OBJECT_INCLUDEPOINT = 11;
+    public static final int ON_ADDED_FILTERED_VALUE = 13;
+    public static final int ON_ADDED_FILTERED_VALUE_INCLUDEPOINT = 15;
+    public static final int ON_ADDED_FILTERED_WRAPPER = 5;
+    public static final int ON_ADDED_FILTERED_WRAPPER_INCLUDEPOINT = 7;
+    public static final int ON_ADDED_UNFILTERED_OBJECT = 8;
+    public static final int ON_ADDED_UNFILTERED_OBJECT_INCLUDEPOINT = 10;
+    public static final int ON_ADDED_UNFILTERED_VALUE = 12;
+    public static final int ON_ADDED_UNFILTERED_VALUE_INCLUDEPOINT = 14;
+    public static final int ON_ADDED_UNFILTERED_WRAPPER = 4;
+    public static final int ON_ADDED_UNFILTERED_WRAPPER_INCLUDEPOINT = 6;
+    public static final int ON_DESTROYED = 3072;
+    public static final int ON_ENDED_FILTERED_MANIFOLD = 327680;
+    public static final int ON_ENDED_FILTERED_OBJECT = 589824;
+    public static final int ON_ENDED_FILTERED_VALUE = 851968;
+    public static final int ON_ENDED_UNFILTERED_MANIFOLD = 262144;
+    public static final int ON_ENDED_UNFILTERED_OBJECT = 524288;
+    public static final int ON_ENDED_UNFILTERED_VALUE = 786432;
+    public static final int ON_PROCESSED_FILTERED_OBJECT = 144;
+    public static final int ON_PROCESSED_FILTERED_OBJECT_INCLUDEPOINT = 176;
+    public static final int ON_PROCESSED_FILTERED_VALUE = 208;
+    public static final int ON_PROCESSED_FILTERED_VALUE_INCLUDEPOINT = 240;
+    public static final int ON_PROCESSED_UNFILTERED_OBJECT = 128;
+    public static final int ON_PROCESSED_UNFILTERED_OBJECT_INCLUDEPOINT = 160;
+    public static final int ON_PROCESSED_UNFILTERED_VALUE = 192;
+    public static final int ON_PROCESSED_UNFILTERED_VALUE_INCLUDEPOINT = 224;
+    public static final int ON_STARTED_FILTERED_MANIFOLD = 20480;
+    public static final int ON_STARTED_FILTERED_OBJECT = 36864;
+    public static final int ON_STARTED_FILTERED_VALUE = 53248;
+    public static final int ON_STARTED_UNFILTERED_MANIFOLD = 16384;
+    public static final int ON_STARTED_UNFILTERED_OBJECT = 32768;
+    public static final int ON_STARTED_UNFILTERED_VALUE = 49152;
+    public static final int SHIFT_ON_ADDED = 0;
+    public static final int SHIFT_ON_DESTROYED = 8;
+    public static final int SHIFT_ON_ENDED = 16;
+    public static final int SHIFT_ON_PROCESSED = 4;
+    public static final int SHIFT_ON_STARTED = 12;
+    public static final int TYPE_MASK = 15;
+}

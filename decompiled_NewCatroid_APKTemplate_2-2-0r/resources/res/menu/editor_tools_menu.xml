@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:icon="@android:drawable/ic_menu_crop"
+        android:id="@+id/tool_hand"
+        android:title="Hand"
+        app:showAsAction="ifRoom"/>
+    <item
+        android:icon="@android:drawable/ic_menu_directions"
+        android:id="@+id/tool_translate"
+        android:title="Translate"
+        app:showAsAction="ifRoom"/>
+    <item
+        android:icon="@android:drawable/ic_menu_rotate"
+        android:id="@+id/tool_rotate"
+        android:title="Rotate"
+        app:showAsAction="ifRoom"/>
+    <item
+        android:icon="@android:drawable/ic_menu_zoom"
+        android:id="@+id/tool_scale"
+        android:title="Scale"
+        app:showAsAction="ifRoom"/>
+</menu>

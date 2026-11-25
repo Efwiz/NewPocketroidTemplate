@@ -1,0 +1,96 @@
+package org.catrobat.catroid.databinding;
+
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.CheckBox;
+import android.widget.LinearLayout;
+import android.widget.Spinner;
+import android.widget.TextView;
+import androidx.viewbinding.ViewBinding;
+import androidx.viewbinding.ViewBindings;
+import org.DanVexTeam.NewCatroidApkTemplate.R;
+import org.catrobat.catroid.ui.BrickLayout;
+
+/* JADX WARN: Classes with same name are omitted, all sources:
+  NewCatroid_APKTemplate_2-2-0r.apk:assets/app-classes.jar:org/catrobat/catroid/databinding/BrickNxtMotorActionBinding.class
+  classes14.dex
+ */
+/* JADX INFO: loaded from: classes14.dex */
+public final class BrickNxtMotorActionBinding implements ViewBinding {
+    public final CheckBox brickCheckbox;
+    public final BrickLayout brickNxtMotorActionLayout;
+    public final TextView legoMotorActionLabel;
+    public final TextView legoMotorActionPercent;
+    public final TextView legoMotorActionSpeedText;
+    public final Spinner legoMotorActionSpinner;
+    public final TextView legoMotorActionToText;
+    public final TextView motorActionSpeedEditText;
+    private final LinearLayout rootView;
+
+    private BrickNxtMotorActionBinding(LinearLayout rootView, CheckBox brickCheckbox, BrickLayout brickNxtMotorActionLayout, TextView legoMotorActionLabel, TextView legoMotorActionPercent, TextView legoMotorActionSpeedText, Spinner legoMotorActionSpinner, TextView legoMotorActionToText, TextView motorActionSpeedEditText) {
+        this.rootView = rootView;
+        this.brickCheckbox = brickCheckbox;
+        this.brickNxtMotorActionLayout = brickNxtMotorActionLayout;
+        this.legoMotorActionLabel = legoMotorActionLabel;
+        this.legoMotorActionPercent = legoMotorActionPercent;
+        this.legoMotorActionSpeedText = legoMotorActionSpeedText;
+        this.legoMotorActionSpinner = legoMotorActionSpinner;
+        this.legoMotorActionToText = legoMotorActionToText;
+        this.motorActionSpeedEditText = motorActionSpeedEditText;
+    }
+
+    @Override // androidx.viewbinding.ViewBinding
+    public LinearLayout getRoot() {
+        return this.rootView;
+    }
+
+    public static BrickNxtMotorActionBinding inflate(LayoutInflater inflater) {
+        return inflate(inflater, null, false);
+    }
+
+    public static BrickNxtMotorActionBinding inflate(LayoutInflater inflater, ViewGroup parent, boolean attachToParent) {
+        View viewInflate = inflater.inflate(R.layout.brick_nxt_motor_action, parent, false);
+        if (attachToParent) {
+            parent.addView(viewInflate);
+        }
+        return bind(viewInflate);
+    }
+
+    public static BrickNxtMotorActionBinding bind(View rootView) {
+        int i = R.id.brick_checkbox;
+        CheckBox checkBox = (CheckBox) ViewBindings.findChildViewById(rootView, R.id.brick_checkbox);
+        if (checkBox != null) {
+            i = R.id.brick_nxt_motor_action_layout;
+            BrickLayout brickLayout = (BrickLayout) ViewBindings.findChildViewById(rootView, R.id.brick_nxt_motor_action_layout);
+            if (brickLayout != null) {
+                i = R.id.lego_motor_action_label;
+                TextView textView = (TextView) ViewBindings.findChildViewById(rootView, R.id.lego_motor_action_label);
+                if (textView != null) {
+                    i = R.id.lego_motor_action_percent;
+                    TextView textView2 = (TextView) ViewBindings.findChildViewById(rootView, R.id.lego_motor_action_percent);
+                    if (textView2 != null) {
+                        i = R.id.lego_motor_action_speed_text;
+                        TextView textView3 = (TextView) ViewBindings.findChildViewById(rootView, R.id.lego_motor_action_speed_text);
+                        if (textView3 != null) {
+                            i = R.id.lego_motor_action_spinner;
+                            Spinner spinner = (Spinner) ViewBindings.findChildViewById(rootView, R.id.lego_motor_action_spinner);
+                            if (spinner != null) {
+                                i = R.id.lego_motor_action_to_text;
+                                TextView textView4 = (TextView) ViewBindings.findChildViewById(rootView, R.id.lego_motor_action_to_text);
+                                if (textView4 != null) {
+                                    i = R.id.motor_action_speed_edit_text;
+                                    TextView textView5 = (TextView) ViewBindings.findChildViewById(rootView, R.id.motor_action_speed_edit_text);
+                                    if (textView5 != null) {
+                                        return new BrickNxtMotorActionBinding((LinearLayout) rootView, checkBox, brickLayout, textView, textView2, textView3, spinner, textView4, textView5);
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        throw new NullPointerException("Missing required view with ID: ".concat(rootView.getResources().getResourceName(i)));
+    }
+}

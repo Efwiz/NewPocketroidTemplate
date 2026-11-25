@@ -1,0 +1,15 @@
+package org.jetbrains.kotlin.types;
+
+import kotlin.Metadata;
+import org.jetbrains.kotlin.container.DefaultImplementation;
+import org.jetbrains.kotlin.container.PlatformSpecificExtension;
+
+/* JADX INFO: compiled from: dynamicTypes.kt */
+/* JADX INFO: loaded from: classes6.dex */
+@DefaultImplementation(impl = DynamicTypesSettings.class)
+@Metadata(d1 = {"\u0000\u0014\n\u0002\u0018\u0002\n\u0002\u0018\u0002\n\u0002\b\u0002\n\u0002\u0010\u000b\n\u0002\b\u0003\b\u0017\u0018\u00002\b\u0012\u0004\u0012\u00020\u00000\u0001B\u0005¢\u0006\u0002\u0010\u0002R\u0014\u0010\u0003\u001a\u00020\u00048VX\u0096\u0004¢\u0006\u0006\u001a\u0004\b\u0005\u0010\u0006¨\u0006\u0007"}, d2 = {"Lorg/jetbrains/kotlin/types/DynamicTypesSettings;", "Lorg/jetbrains/kotlin/container/PlatformSpecificExtension;", "()V", "dynamicTypesAllowed", "", "getDynamicTypesAllowed", "()Z", "descriptors"}, k = 1, mv = {1, 9, 0}, xi = 48)
+public class DynamicTypesSettings implements PlatformSpecificExtension<DynamicTypesSettings> {
+    public boolean getDynamicTypesAllowed() {
+        return false;
+    }
+}

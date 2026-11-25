@@ -1,0 +1,12 @@
+package org.jetbrains.kotlin.it.unimi.dsi.fastutil.objects;
+
+import java.io.Serializable;
+
+/* JADX INFO: loaded from: classes5.dex */
+public abstract class AbstractObject2ObjectFunction<K, V> implements Object2ObjectFunction<K, V>, Serializable {
+    private static final long serialVersionUID = -4940583368468432370L;
+    protected V defRetValue;
+
+    protected AbstractObject2ObjectFunction() {
+    }
+}

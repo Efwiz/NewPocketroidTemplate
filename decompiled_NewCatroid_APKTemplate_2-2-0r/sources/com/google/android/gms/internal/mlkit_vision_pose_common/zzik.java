@@ -1,0 +1,14 @@
+package com.google.android.gms.internal.mlkit_vision_pose_common;
+
+import java.util.Iterator;
+
+/* JADX INFO: compiled from: com.google.mlkit:pose-detection-common@@17.0.0 */
+/* JADX INFO: loaded from: classes9.dex */
+final class zzik {
+    private static final Iterator<Object> zza = new zzij();
+    private static final Iterable<Object> zzb = new zzim();
+
+    static <T> Iterable<T> zza() {
+        return (Iterable<T>) zzb;
+    }
+}

@@ -1,0 +1,48 @@
+package com.android.tools.r8.dex.code;
+
+import com.android.tools.r8.graph.C0702m;
+import com.android.tools.r8.graph.o5;
+import com.android.tools.r8.internal.C2102gl;
+import com.android.tools.r8.internal.C2363kB;
+import com.android.tools.r8.internal.EnumC2527mI;
+
+/* JADX INFO: compiled from: R8_8.1.56_756d1f50f618dd1c39c000f11defb367a21e9e866e3401b884be16c0950f6f79 */
+/* JADX INFO: loaded from: classes7.dex */
+public class D2 extends T0 {
+    static final /* synthetic */ boolean i = true;
+
+    D2(int i2, InterfaceC0409a interfaceC0409a) {
+        super(i2, interfaceC0409a);
+    }
+
+    @Override // com.android.tools.r8.dex.code.B1
+    public final String A() {
+        return "mul-float";
+    }
+
+    @Override // com.android.tools.r8.dex.code.B1
+    public final /* bridge */ /* synthetic */ void a(C0702m c0702m, com.android.tools.r8.dex.L l, C2363kB c2363kB, o5 o5Var) {
+    }
+
+    @Override // com.android.tools.r8.dex.code.B1
+    public final String t() {
+        return "MulFloat";
+    }
+
+    @Override // com.android.tools.r8.dex.code.B1
+    public final int v() {
+        return 168;
+    }
+
+    public D2(int i2, int i3, int i4) {
+        super(i2, i3, i4);
+        if (!i && i2 == i4 && i2 != i3) {
+            throw new AssertionError();
+        }
+    }
+
+    @Override // com.android.tools.r8.dex.code.B1
+    public final void a(C2102gl c2102gl) {
+        c2102gl.g(EnumC2527mI.FLOAT, this.e, this.f, this.g);
+    }
+}

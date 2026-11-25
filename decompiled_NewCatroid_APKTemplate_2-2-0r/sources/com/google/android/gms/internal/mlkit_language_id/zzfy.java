@@ -1,0 +1,11 @@
+package com.google.android.gms.internal.mlkit_language_id;
+
+/* JADX INFO: compiled from: com.google.mlkit:language-id@@16.1.1 */
+/* JADX INFO: loaded from: classes9.dex */
+public interface zzfy extends zzgb, Cloneable {
+    zzfy zza(zzfz zzfzVar);
+
+    zzfz zzf();
+
+    zzfz zzg();
+}

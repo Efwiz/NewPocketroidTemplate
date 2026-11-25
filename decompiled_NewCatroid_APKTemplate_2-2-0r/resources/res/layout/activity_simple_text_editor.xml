@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:background="@color/app_background"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:background="@color/toolbar_background"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        app:navigationIcon="@drawable/stage_dialog_button_back"
+        app:titleTextColor="@color/solid_white"/>
+    <EditText
+        android:textSize="14sp"
+        android:textColor="@color/solid_white"
+        android:textColorHint="@color/spinner_icon_and_inactive_elements"
+        android:gravity="start|top"
+        android:id="@+id/editorEditText"
+        android:background="@null"
+        android:padding="16dp"
+        android:scrollbars="vertical|horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:hint="// Loading..."
+        android:scrollHorizontally="true"
+        android:inputType="textNoSuggestions"
+        android:fontFamily="monospace"/>
+</LinearLayout>

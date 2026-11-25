@@ -1,0 +1,98 @@
+package org.eclipse.jgit.storage.file;
+
+import org.eclipse.jgit.internal.storage.file.WindowCache;
+import org.eclipse.jgit.lib.Config;
+import org.eclipse.jgit.lib.ConfigConstants;
+
+/* JADX INFO: loaded from: classes13.dex */
+public class WindowCacheConfig {
+    public static final int KB = 1024;
+    public static final int MB = 1048576;
+    private int packedGitOpenFiles = 128;
+    private long packedGitLimit = 10485760;
+    private boolean useStrongRefs = false;
+    private int packedGitWindowSize = 8192;
+    private boolean packedGitMMAP = false;
+    private int deltaBaseCacheLimit = 10485760;
+    private int streamFileThreshold = 52428800;
+    private boolean exposeStats = true;
+
+    public int getPackedGitOpenFiles() {
+        return this.packedGitOpenFiles;
+    }
+
+    public void setPackedGitOpenFiles(int i) {
+        this.packedGitOpenFiles = i;
+    }
+
+    public long getPackedGitLimit() {
+        return this.packedGitLimit;
+    }
+
+    public void setPackedGitLimit(long j) {
+        this.packedGitLimit = j;
+    }
+
+    public boolean isPackedGitUseStrongRefs() {
+        return this.useStrongRefs;
+    }
+
+    public void setPackedGitUseStrongRefs(boolean z) {
+        this.useStrongRefs = z;
+    }
+
+    public int getPackedGitWindowSize() {
+        return this.packedGitWindowSize;
+    }
+
+    public void setPackedGitWindowSize(int i) {
+        this.packedGitWindowSize = i;
+    }
+
+    public boolean isPackedGitMMAP() {
+        return this.packedGitMMAP;
+    }
+
+    public void setPackedGitMMAP(boolean z) {
+        this.packedGitMMAP = z;
+    }
+
+    public int getDeltaBaseCacheLimit() {
+        return this.deltaBaseCacheLimit;
+    }
+
+    public void setDeltaBaseCacheLimit(int i) {
+        this.deltaBaseCacheLimit = i;
+    }
+
+    public int getStreamFileThreshold() {
+        return this.streamFileThreshold;
+    }
+
+    public void setStreamFileThreshold(int i) {
+        this.streamFileThreshold = i;
+    }
+
+    public boolean getExposeStatsViaJmx() {
+        return this.exposeStats;
+    }
+
+    public void setExposeStatsViaJmx(boolean z) {
+        this.exposeStats = z;
+    }
+
+    public WindowCacheConfig fromConfig(Config config) {
+        setPackedGitUseStrongRefs(config.getBoolean(ConfigConstants.CONFIG_CORE_SECTION, ConfigConstants.CONFIG_KEY_PACKED_GIT_USE_STRONGREFS, isPackedGitUseStrongRefs()));
+        setPackedGitOpenFiles(config.getInt(ConfigConstants.CONFIG_CORE_SECTION, null, ConfigConstants.CONFIG_KEY_PACKED_GIT_OPENFILES, getPackedGitOpenFiles()));
+        setPackedGitLimit(config.getLong(ConfigConstants.CONFIG_CORE_SECTION, null, ConfigConstants.CONFIG_KEY_PACKED_GIT_LIMIT, getPackedGitLimit()));
+        setPackedGitWindowSize(config.getInt(ConfigConstants.CONFIG_CORE_SECTION, null, ConfigConstants.CONFIG_KEY_PACKED_GIT_WINDOWSIZE, getPackedGitWindowSize()));
+        setPackedGitMMAP(config.getBoolean(ConfigConstants.CONFIG_CORE_SECTION, null, ConfigConstants.CONFIG_KEY_PACKED_GIT_MMAP, isPackedGitMMAP()));
+        setDeltaBaseCacheLimit(config.getInt(ConfigConstants.CONFIG_CORE_SECTION, null, ConfigConstants.CONFIG_KEY_DELTA_BASE_CACHE_LIMIT, getDeltaBaseCacheLimit()));
+        setStreamFileThreshold((int) Math.min(Math.min(config.getLong(ConfigConstants.CONFIG_CORE_SECTION, null, ConfigConstants.CONFIG_KEY_STREAM_FILE_TRESHOLD, getStreamFileThreshold()), Runtime.getRuntime().maxMemory() / 4), 2147483647L));
+        return this;
+    }
+
+    public void install() {
+        WindowCache.reconfigure(this);
+    }
+}

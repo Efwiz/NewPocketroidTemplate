@@ -1,0 +1,71 @@
+package com.badlogic.gdx.graphics;
+
+import com.badlogic.gdx.utils.ObjectMap;
+
+/* JADX WARN: Classes with same name are omitted, all sources:
+  NewCatroid_APKTemplate_2-2-0r.apk:assets/gdx.jar:com/badlogic/gdx/graphics/Colors.class
+  classes8.dex
+ */
+/* JADX INFO: loaded from: classes8.dex */
+public final class Colors {
+    private static final ObjectMap<String, Color> map = new ObjectMap<>();
+
+    static {
+        reset();
+    }
+
+    public static ObjectMap<String, Color> getColors() {
+        return map;
+    }
+
+    public static Color get(String str) {
+        return map.get(str);
+    }
+
+    public static Color put(String str, Color color) {
+        return map.put(str, color);
+    }
+
+    public static void reset() {
+        ObjectMap<String, Color> objectMap = map;
+        objectMap.clear();
+        objectMap.put("CLEAR", Color.CLEAR);
+        objectMap.put("CLEAR_WHITE", Color.CLEAR_WHITE);
+        objectMap.put("BLACK", Color.BLACK);
+        objectMap.put("WHITE", Color.WHITE);
+        objectMap.put("LIGHT_GRAY", Color.LIGHT_GRAY);
+        objectMap.put("GRAY", Color.GRAY);
+        objectMap.put("DARK_GRAY", Color.DARK_GRAY);
+        objectMap.put("BLUE", Color.BLUE);
+        objectMap.put("NAVY", Color.NAVY);
+        objectMap.put("ROYAL", Color.ROYAL);
+        objectMap.put("SLATE", Color.SLATE);
+        objectMap.put("SKY", Color.SKY);
+        objectMap.put("CYAN", Color.CYAN);
+        objectMap.put("TEAL", Color.TEAL);
+        objectMap.put("GREEN", Color.GREEN);
+        objectMap.put("CHARTREUSE", Color.CHARTREUSE);
+        objectMap.put("LIME", Color.LIME);
+        objectMap.put("FOREST", Color.FOREST);
+        objectMap.put("OLIVE", Color.OLIVE);
+        objectMap.put("YELLOW", Color.YELLOW);
+        objectMap.put("GOLD", Color.GOLD);
+        objectMap.put("GOLDENROD", Color.GOLDENROD);
+        objectMap.put("ORANGE", Color.ORANGE);
+        objectMap.put("BROWN", Color.BROWN);
+        objectMap.put("TAN", Color.TAN);
+        objectMap.put("FIREBRICK", Color.FIREBRICK);
+        objectMap.put("RED", Color.RED);
+        objectMap.put("SCARLET", Color.SCARLET);
+        objectMap.put("CORAL", Color.CORAL);
+        objectMap.put("SALMON", Color.SALMON);
+        objectMap.put("PINK", Color.PINK);
+        objectMap.put("MAGENTA", Color.MAGENTA);
+        objectMap.put("PURPLE", Color.PURPLE);
+        objectMap.put("VIOLET", Color.VIOLET);
+        objectMap.put("MAROON", Color.MAROON);
+    }
+
+    private Colors() {
+    }
+}

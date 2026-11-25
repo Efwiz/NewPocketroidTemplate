@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:gravity="center_vertical"
+    android:orientation="horizontal"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="6dp"
+    android:layout_marginBottom="4dp">
+    <TextView
+        android:textSize="12sp"
+        android:textColor="@color/text_secondary"
+        android:ellipsize="middle"
+        android:id="@+id/text_texture_path"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="None"
+        android:maxLines="1"
+        android:layout_weight="1"/>
+    <Button
+        android:textSize="11sp"
+        android:textColor="@color/solid_white"
+        android:id="@+id/btn_select_texture"
+        android:layout_width="wrap_content"
+        android:layout_height="36dp"
+        android:text="Set"
+        android:layout_marginStart="8dp"
+        android:backgroundTint="@color/toolbar_background"/>
+    <ImageButton
+        android:id="@+id/btn_clear_texture"
+        android:background="?attr/selectableItemBackgroundBorderless"
+        android:visibility="gone"
+        android:layout_width="36dp"
+        android:layout_height="36dp"
+        android:src="@android:drawable/ic_menu_close_clear_cancel"
+        app:tint="#ff5252"/>
+</LinearLayout>

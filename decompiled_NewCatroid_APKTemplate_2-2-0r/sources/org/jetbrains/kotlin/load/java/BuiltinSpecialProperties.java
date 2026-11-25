@@ -1,0 +1,108 @@
+package org.jetbrains.kotlin.load.java;
+
+import com.google.firebase.crashlytics.internal.metadata.UserMetadata;
+import com.reandroid.arsc.chunk.TypeBlock;
+import com.reandroid.arsc.value.CompoundEntry;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.LinkedHashMap;
+import java.util.LinkedHashSet;
+import java.util.List;
+import java.util.Map;
+import java.util.Set;
+import kotlin.Metadata;
+import kotlin.Pair;
+import kotlin.TuplesKt;
+import kotlin.collections.CollectionsKt;
+import kotlin.collections.MapsKt;
+import kotlin.jvm.internal.Intrinsics;
+import org.jetbrains.kotlin.builtins.StandardNames;
+import org.jetbrains.kotlin.builtins.jvm.JavaToKotlinClassMap;
+import org.jetbrains.kotlin.name.ClassId;
+import org.jetbrains.kotlin.name.FqName;
+import org.jetbrains.kotlin.name.FqNameUnsafe;
+import org.jetbrains.kotlin.name.Name;
+
+/* JADX INFO: compiled from: BuiltinSpecialProperties.kt */
+/* JADX INFO: loaded from: classes5.dex */
+@Metadata(d1 = {"\u0000(\n\u0002\u0018\u0002\n\u0002\u0010\u0000\n\u0002\b\u0002\n\u0002\u0010\"\n\u0002\u0018\u0002\n\u0002\b\u0003\n\u0002\u0010$\n\u0002\u0018\u0002\n\u0002\u0010 \n\u0002\b\n\bÆ\u0002\u0018\u00002\u00020\u0001B\u0007\b\u0002¢\u0006\u0002\u0010\u0002J\u0014\u0010\u0013\u001a\b\u0012\u0004\u0012\u00020\n0\u000b2\u0006\u0010\u0014\u001a\u00020\nR\u0017\u0010\u0003\u001a\b\u0012\u0004\u0012\u00020\u00050\u0004¢\u0006\b\n\u0000\u001a\u0004\b\u0006\u0010\u0007R \u0010\b\u001a\u0014\u0012\u0004\u0012\u00020\n\u0012\n\u0012\b\u0012\u0004\u0012\u00020\n0\u000b0\tX\u0082\u0004¢\u0006\u0002\n\u0000R\u001d\u0010\f\u001a\u000e\u0012\u0004\u0012\u00020\u0005\u0012\u0004\u0012\u00020\n0\t¢\u0006\b\n\u0000\u001a\u0004\b\r\u0010\u000eR\u0017\u0010\u000f\u001a\b\u0012\u0004\u0012\u00020\u00050\u0004¢\u0006\b\n\u0000\u001a\u0004\b\u0010\u0010\u0007R\u0017\u0010\u0011\u001a\b\u0012\u0004\u0012\u00020\n0\u0004¢\u0006\b\n\u0000\u001a\u0004\b\u0012\u0010\u0007¨\u0006\u0015"}, d2 = {"Lorg/jetbrains/kotlin/load/java/BuiltinSpecialProperties;", "", "()V", "GETTER_FQ_NAMES", "", "Lorg/jetbrains/kotlin/name/FqName;", "getGETTER_FQ_NAMES", "()Ljava/util/Set;", "GETTER_JVM_NAME_TO_PROPERTIES_SHORT_NAME_MAP", "", "Lorg/jetbrains/kotlin/name/Name;", "", "PROPERTY_FQ_NAME_TO_JVM_GETTER_NAME_MAP", "getPROPERTY_FQ_NAME_TO_JVM_GETTER_NAME_MAP", "()Ljava/util/Map;", "SPECIAL_FQ_NAMES", "getSPECIAL_FQ_NAMES", "SPECIAL_SHORT_NAMES", "getSPECIAL_SHORT_NAMES", "getPropertyNameCandidatesBySpecialGetterName", "name1", "compiler.common.jvm"}, k = 1, mv = {1, 9, 0}, xi = 48)
+public final class BuiltinSpecialProperties {
+    private static final Set<FqName> GETTER_FQ_NAMES;
+    private static final Map<Name, List<Name>> GETTER_JVM_NAME_TO_PROPERTIES_SHORT_NAME_MAP;
+    public static final BuiltinSpecialProperties INSTANCE = new BuiltinSpecialProperties();
+    private static final Map<FqName, Name> PROPERTY_FQ_NAME_TO_JVM_GETTER_NAME_MAP;
+    private static final Set<FqName> SPECIAL_FQ_NAMES;
+    private static final Set<Name> SPECIAL_SHORT_NAMES;
+
+    private BuiltinSpecialProperties() {
+    }
+
+    public final Map<FqName, Name> getPROPERTY_FQ_NAME_TO_JVM_GETTER_NAME_MAP() {
+        return PROPERTY_FQ_NAME_TO_JVM_GETTER_NAME_MAP;
+    }
+
+    static {
+        Map<FqName, Name> mapMapOf = MapsKt.mapOf(TuplesKt.to(BuiltinSpecialPropertiesKt.childSafe(StandardNames.FqNames._enum, "name"), StandardNames.NAME), TuplesKt.to(BuiltinSpecialPropertiesKt.childSafe(StandardNames.FqNames._enum, "ordinal"), Name.identifier("ordinal")), TuplesKt.to(BuiltinSpecialPropertiesKt.child(StandardNames.FqNames.collection, "size"), Name.identifier("size")), TuplesKt.to(BuiltinSpecialPropertiesKt.child(StandardNames.FqNames.map, "size"), Name.identifier("size")), TuplesKt.to(BuiltinSpecialPropertiesKt.childSafe(StandardNames.FqNames.charSequence, "length"), Name.identifier("length")), TuplesKt.to(BuiltinSpecialPropertiesKt.child(StandardNames.FqNames.map, UserMetadata.KEYDATA_FILENAME), Name.identifier("keySet")), TuplesKt.to(BuiltinSpecialPropertiesKt.child(StandardNames.FqNames.map, CompoundEntry.NAME_values), Name.identifier(CompoundEntry.NAME_values)), TuplesKt.to(BuiltinSpecialPropertiesKt.child(StandardNames.FqNames.map, TypeBlock.NAME_entries), Name.identifier("entrySet")));
+        PROPERTY_FQ_NAME_TO_JVM_GETTER_NAME_MAP = mapMapOf;
+        Set<Map.Entry<FqName, Name>> setEntrySet = mapMapOf.entrySet();
+        ArrayList<Pair> arrayList = new ArrayList(CollectionsKt.collectionSizeOrDefault(setEntrySet, 10));
+        Iterator<T> it = setEntrySet.iterator();
+        while (it.hasNext()) {
+            Map.Entry entry = (Map.Entry) it.next();
+            arrayList.add(new Pair(((FqName) entry.getKey()).shortName(), entry.getValue()));
+        }
+        LinkedHashMap linkedHashMap = new LinkedHashMap();
+        for (Pair pair : arrayList) {
+            Name name2 = (Name) pair.getSecond();
+            Object obj = linkedHashMap.get(name2);
+            if (obj == null) {
+                obj = (List) new ArrayList();
+                linkedHashMap.put(name2, obj);
+            }
+            ((List) obj).add((Name) pair.getFirst());
+        }
+        LinkedHashMap linkedHashMap2 = new LinkedHashMap(MapsKt.mapCapacity(linkedHashMap.size()));
+        for (Map.Entry entry2 : linkedHashMap.entrySet()) {
+            linkedHashMap2.put(entry2.getKey(), CollectionsKt.distinct((Iterable) entry2.getValue()));
+        }
+        GETTER_JVM_NAME_TO_PROPERTIES_SHORT_NAME_MAP = linkedHashMap2;
+        Map<FqName, Name> map = PROPERTY_FQ_NAME_TO_JVM_GETTER_NAME_MAP;
+        LinkedHashSet linkedHashSet = new LinkedHashSet();
+        for (Map.Entry<FqName, Name> entry3 : map.entrySet()) {
+            JavaToKotlinClassMap javaToKotlinClassMap = JavaToKotlinClassMap.INSTANCE;
+            FqNameUnsafe unsafe = entry3.getKey().parent().toUnsafe();
+            Intrinsics.checkNotNullExpressionValue(unsafe, "toUnsafe(...)");
+            ClassId classIdMapKotlinToJava = javaToKotlinClassMap.mapKotlinToJava(unsafe);
+            Intrinsics.checkNotNull(classIdMapKotlinToJava);
+            linkedHashSet.add(classIdMapKotlinToJava.asSingleFqName().child(entry3.getValue()));
+        }
+        GETTER_FQ_NAMES = linkedHashSet;
+        Set<FqName> setKeySet = PROPERTY_FQ_NAME_TO_JVM_GETTER_NAME_MAP.keySet();
+        SPECIAL_FQ_NAMES = setKeySet;
+        Set<FqName> set = setKeySet;
+        ArrayList arrayList2 = new ArrayList(CollectionsKt.collectionSizeOrDefault(set, 10));
+        Iterator<T> it2 = set.iterator();
+        while (it2.hasNext()) {
+            arrayList2.add(((FqName) it2.next()).shortName());
+        }
+        SPECIAL_SHORT_NAMES = CollectionsKt.toSet(arrayList2);
+    }
+
+    public final Set<FqName> getGETTER_FQ_NAMES() {
+        return GETTER_FQ_NAMES;
+    }
+
+    public final Set<FqName> getSPECIAL_FQ_NAMES() {
+        return SPECIAL_FQ_NAMES;
+    }
+
+    public final Set<Name> getSPECIAL_SHORT_NAMES() {
+        return SPECIAL_SHORT_NAMES;
+    }
+
+    public final List<Name> getPropertyNameCandidatesBySpecialGetterName(Name name1) {
+        Intrinsics.checkNotNullParameter(name1, "name1");
+        List<Name> list = GETTER_JVM_NAME_TO_PROPERTIES_SHORT_NAME_MAP.get(name1);
+        return list == null ? CollectionsKt.emptyList() : list;
+    }
+}

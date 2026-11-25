@@ -1,0 +1,11 @@
+package antlr;
+
+/* JADX INFO: loaded from: classes.dex */
+public class ANTLRError extends Error {
+    public ANTLRError() {
+    }
+
+    public ANTLRError(String str) {
+        super(str);
+    }
+}

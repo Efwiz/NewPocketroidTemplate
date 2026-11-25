@@ -1,0 +1,59 @@
+package org.koin.androidx.fragment.dsl;
+
+import androidx.exifinterface.media.ExifInterface;
+import androidx.fragment.app.Fragment;
+import com.android.apksig.internal.apk.AndroidBinXmlParser;
+import java.util.List;
+import kotlin.Metadata;
+import kotlin.collections.CollectionsKt;
+import kotlin.jvm.functions.Function2;
+import kotlin.jvm.internal.Intrinsics;
+import kotlin.jvm.internal.Reflection;
+import org.koin.core.definition.BeanDefinition;
+import org.koin.core.definition.Definitions;
+import org.koin.core.definition.Kind;
+import org.koin.core.definition.Options;
+import org.koin.core.error.DefinitionOverrideException;
+import org.koin.core.parameter.DefinitionParameters;
+import org.koin.core.qualifier.Qualifier;
+import org.koin.core.scope.Scope;
+import org.koin.core.scope.ScopeDefinition;
+import org.koin.dsl.ScopeDSL;
+
+/* JADX INFO: compiled from: ScopeSetExt.kt */
+/* JADX INFO: loaded from: classes6.dex */
+@Metadata(bv = {1, 0, 3}, d1 = {"\u00004\n\u0000\n\u0002\u0018\u0002\n\u0000\n\u0002\u0018\u0002\n\u0002\u0018\u0002\n\u0000\n\u0002\u0018\u0002\n\u0000\n\u0002\u0010\u000b\n\u0000\n\u0002\u0018\u0002\n\u0002\u0018\u0002\n\u0002\u0018\u0002\n\u0002\u0018\u0002\n\u0002\u0018\u0002\n\u0000\u001a`\u0010\u0000\u001a\b\u0012\u0004\u0012\u0002H\u00020\u0001\"\n\b\u0000\u0010\u0002\u0018\u0001*\u00020\u0003*\u00020\u00042\n\b\u0002\u0010\u0005\u001a\u0004\u0018\u00010\u00062\b\b\u0002\u0010\u0007\u001a\u00020\b2)\b\b\u0010\t\u001a#\u0012\u0004\u0012\u00020\u000b\u0012\u0004\u0012\u00020\f\u0012\u0004\u0012\u0002H\u00020\nj\b\u0012\u0004\u0012\u0002H\u0002`\r¢\u0006\u0002\b\u000eH\u0086\b¨\u0006\u000f"}, d2 = {"fragment", "Lorg/koin/core/definition/BeanDefinition;", ExifInterface.GPS_DIRECTION_TRUE, "Landroidx/fragment/app/Fragment;", "Lorg/koin/dsl/ScopeDSL;", "qualifier", "Lorg/koin/core/qualifier/Qualifier;", "override", "", "definition", "Lkotlin/Function2;", "Lorg/koin/core/scope/Scope;", "Lorg/koin/core/parameter/DefinitionParameters;", "Lorg/koin/core/definition/Definition;", "Lkotlin/ExtensionFunctionType;", "koin-androidx-fragment_release"}, k = 2, mv = {1, 1, 16})
+public final class ScopeSetExtKt {
+    public static /* synthetic */ BeanDefinition fragment$default(ScopeDSL fragment, Qualifier qualifier, boolean z, Function2 definition, int i, Object obj) throws DefinitionOverrideException {
+        Qualifier qualifier2;
+        if ((i & 1) != 0) {
+            qualifier2 = null;
+        } else {
+            qualifier2 = qualifier;
+        }
+        boolean z2 = (i & 2) != 0 ? false : z;
+        Intrinsics.checkParameterIsNotNull(fragment, "$this$fragment");
+        Intrinsics.checkParameterIsNotNull(definition, "definition");
+        Definitions definitions = Definitions.INSTANCE;
+        ScopeDefinition scopeDefinition = fragment.getScopeDefinition();
+        Options options = new Options(false, z2);
+        List listEmptyList = CollectionsKt.emptyList();
+        Intrinsics.reifiedOperationMarker(4, ExifInterface.GPS_DIRECTION_TRUE);
+        BeanDefinition beanDefinition = new BeanDefinition(scopeDefinition, Reflection.getOrCreateKotlinClass(Object.class), qualifier2, definition, Kind.Factory, listEmptyList, options, null, null, AndroidBinXmlParser.Chunk.RES_XML_TYPE_RESOURCE_MAP, null);
+        ScopeDefinition.save$default(scopeDefinition, beanDefinition, false, 2, null);
+        return beanDefinition;
+    }
+
+    public static final /* synthetic */ <T extends Fragment> BeanDefinition<T> fragment(ScopeDSL fragment, Qualifier qualifier, boolean z, Function2<? super Scope, ? super DefinitionParameters, ? extends T> definition) throws DefinitionOverrideException {
+        Intrinsics.checkParameterIsNotNull(fragment, "$this$fragment");
+        Intrinsics.checkParameterIsNotNull(definition, "definition");
+        Definitions definitions = Definitions.INSTANCE;
+        ScopeDefinition scopeDefinition = fragment.getScopeDefinition();
+        Options options = new Options(false, z);
+        List listEmptyList = CollectionsKt.emptyList();
+        Intrinsics.reifiedOperationMarker(4, ExifInterface.GPS_DIRECTION_TRUE);
+        BeanDefinition<T> beanDefinition = new BeanDefinition<>(scopeDefinition, Reflection.getOrCreateKotlinClass(Object.class), qualifier, definition, Kind.Factory, listEmptyList, options, null, null, AndroidBinXmlParser.Chunk.RES_XML_TYPE_RESOURCE_MAP, null);
+        ScopeDefinition.save$default(scopeDefinition, beanDefinition, false, 2, null);
+        return beanDefinition;
+    }
+}

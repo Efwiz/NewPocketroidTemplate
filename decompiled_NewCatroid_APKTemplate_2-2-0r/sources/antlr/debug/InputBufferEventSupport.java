@@ -1,0 +1,110 @@
+package antlr.debug;
+
+import io.netty.util.internal.StringUtil;
+import java.util.Vector;
+
+/* JADX INFO: loaded from: classes.dex */
+public class InputBufferEventSupport {
+    protected static final int CONSUME = 0;
+    protected static final int LA = 1;
+    protected static final int MARK = 2;
+    protected static final int REWIND = 3;
+    private InputBufferEvent inputBufferEvent;
+    private Vector inputBufferListeners;
+    private Object source;
+
+    public InputBufferEventSupport(Object obj) {
+        this.inputBufferEvent = new InputBufferEvent(obj);
+        this.source = obj;
+    }
+
+    public void addInputBufferListener(InputBufferListener inputBufferListener) {
+        if (this.inputBufferListeners == null) {
+            this.inputBufferListeners = new Vector();
+        }
+        this.inputBufferListeners.addElement(inputBufferListener);
+    }
+
+    public void fireConsume(char c) {
+        this.inputBufferEvent.setValues(0, c, 0);
+        fireEvents(0, this.inputBufferListeners);
+    }
+
+    public void fireEvent(int i, ListenerBase listenerBase) {
+        if (i == 0) {
+            ((InputBufferListener) listenerBase).inputBufferConsume(this.inputBufferEvent);
+            return;
+        }
+        if (i == 1) {
+            ((InputBufferListener) listenerBase).inputBufferLA(this.inputBufferEvent);
+        } else if (i == 2) {
+            ((InputBufferListener) listenerBase).inputBufferMark(this.inputBufferEvent);
+        } else {
+            if (i == 3) {
+                ((InputBufferListener) listenerBase).inputBufferRewind(this.inputBufferEvent);
+                return;
+            }
+            throw new IllegalArgumentException(new StringBuffer("bad type ").append(i).append(" for fireEvent()").toString());
+        }
+    }
+
+    public void fireEvents(int i, Vector vector) {
+        synchronized (this) {
+            try {
+                if (vector == null) {
+                    return;
+                }
+                Vector vector2 = (Vector) vector.clone();
+                if (vector2 != null) {
+                    for (int i2 = 0; i2 < vector2.size(); i2++) {
+                        fireEvent(i, (ListenerBase) vector2.elementAt(i2));
+                    }
+                }
+            } catch (Throwable th) {
+                throw th;
+            }
+        }
+    }
+
+    public void fireLA(char c, int i) {
+        this.inputBufferEvent.setValues(1, c, i);
+        fireEvents(1, this.inputBufferListeners);
+    }
+
+    public void fireMark(int i) {
+        this.inputBufferEvent.setValues(2, StringUtil.SPACE, i);
+        fireEvents(2, this.inputBufferListeners);
+    }
+
+    public void fireRewind(int i) {
+        this.inputBufferEvent.setValues(3, StringUtil.SPACE, i);
+        fireEvents(3, this.inputBufferListeners);
+    }
+
+    public Vector getInputBufferListeners() {
+        return this.inputBufferListeners;
+    }
+
+    protected void refresh(Vector vector) {
+        Vector vector2;
+        synchronized (vector) {
+            vector2 = (Vector) vector.clone();
+        }
+        if (vector2 != null) {
+            for (int i = 0; i < vector2.size(); i++) {
+                ((ListenerBase) vector2.elementAt(i)).refresh();
+            }
+        }
+    }
+
+    public void refreshListeners() {
+        refresh(this.inputBufferListeners);
+    }
+
+    public void removeInputBufferListener(InputBufferListener inputBufferListener) {
+        Vector vector = this.inputBufferListeners;
+        if (vector != null) {
+            vector.removeElement(inputBufferListener);
+        }
+    }
+}

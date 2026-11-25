@@ -1,0 +1,12 @@
+package org.jetbrains.kotlin.kotlinx.collections.immutable;
+
+import androidx.exifinterface.media.ExifInterface;
+import java.util.Collection;
+import kotlin.Metadata;
+import kotlin.jvm.internal.markers.KMappedMarker;
+
+/* JADX INFO: compiled from: ImmutableCollection.kt */
+/* JADX INFO: loaded from: classes5.dex */
+@Metadata(bv = {1, 0, 3}, d1 = {"\u0000\f\n\u0002\u0018\u0002\n\u0000\n\u0002\u0010\u001e\n\u0000\bf\u0018\u0000*\u0006\b\u0000\u0010\u0001 \u00012\b\u0012\u0004\u0012\u0002H\u00010\u0002¨\u0006\u0003"}, d2 = {"Lorg/jetbrains/kotlin/kotlinx/collections/immutable/ImmutableCollection;", ExifInterface.LONGITUDE_EAST, "", "kotlinx-collections-immutable"}, k = 1, mv = {1, 1, 16})
+public interface ImmutableCollection<E> extends Collection<E>, KMappedMarker {
+}

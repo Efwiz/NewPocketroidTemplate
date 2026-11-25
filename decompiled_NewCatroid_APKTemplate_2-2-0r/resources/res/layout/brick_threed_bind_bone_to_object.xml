@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:gravity="center_vertical"
+    android:orientation="horizontal"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+    <CheckBox
+        android:gravity="center_vertical"
+        android:id="@+id/brick_checkbox"
+        android:visibility="gone"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+    <org.catrobat.catroid.ui.BrickLayout
+        android:id="@+id/brick_layout"
+        style="@style/BrickContainer.Threed.Medium">
+        <include layout="@layout/icon_brick_category_threed"/>
+        <TextView
+            android:text="@string/brick_threed_bind_bone_1"
+            style="@style/BrickText.SingleLine"/>
+        <TextView
+            android:id="@+id/brick_bind_bone_name"
+            style="@style/BrickEditText"/>
+        <TextView
+            android:text="@string/brick_threed_bind_bone_2"
+            app:layout_newLine="true"
+            style="@style/BrickText.SingleLine"/>
+        <TextView
+            android:id="@+id/brick_bind_model_id"
+            style="@style/BrickEditText"/>
+        <TextView
+            android:text="@string/brick_threed_bind_bone_3"
+            app:layout_newLine="true"
+            style="@style/BrickText.SingleLine"/>
+        <TextView
+            android:id="@+id/brick_bind_target_id"
+            style="@style/BrickEditText"/>
+    </org.catrobat.catroid.ui.BrickLayout>
+</LinearLayout>

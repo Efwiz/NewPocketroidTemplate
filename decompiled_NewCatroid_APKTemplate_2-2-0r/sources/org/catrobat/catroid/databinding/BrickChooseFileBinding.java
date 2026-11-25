@@ -1,0 +1,71 @@
+package org.catrobat.catroid.databinding;
+
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.CheckBox;
+import android.widget.LinearLayout;
+import android.widget.Spinner;
+import androidx.viewbinding.ViewBinding;
+import androidx.viewbinding.ViewBindings;
+import org.DanVexTeam.NewCatroidApkTemplate.R;
+import org.catrobat.catroid.ui.BrickLayout;
+
+/* JADX WARN: Classes with same name are omitted, all sources:
+  NewCatroid_APKTemplate_2-2-0r.apk:assets/app-classes.jar:org/catrobat/catroid/databinding/BrickChooseFileBinding.class
+  classes14.dex
+ */
+/* JADX INFO: loaded from: classes14.dex */
+public final class BrickChooseFileBinding implements ViewBinding {
+    public final CheckBox brickCheckbox;
+    public final BrickLayout brickChooseFileLayout;
+    public final Spinner brickChooseFileTypeSpinner;
+    public final Spinner brickChooseFileVarSpinner;
+    private final LinearLayout rootView;
+
+    private BrickChooseFileBinding(LinearLayout rootView, CheckBox brickCheckbox, BrickLayout brickChooseFileLayout, Spinner brickChooseFileTypeSpinner, Spinner brickChooseFileVarSpinner) {
+        this.rootView = rootView;
+        this.brickCheckbox = brickCheckbox;
+        this.brickChooseFileLayout = brickChooseFileLayout;
+        this.brickChooseFileTypeSpinner = brickChooseFileTypeSpinner;
+        this.brickChooseFileVarSpinner = brickChooseFileVarSpinner;
+    }
+
+    @Override // androidx.viewbinding.ViewBinding
+    public LinearLayout getRoot() {
+        return this.rootView;
+    }
+
+    public static BrickChooseFileBinding inflate(LayoutInflater inflater) {
+        return inflate(inflater, null, false);
+    }
+
+    public static BrickChooseFileBinding inflate(LayoutInflater inflater, ViewGroup parent, boolean attachToParent) {
+        View viewInflate = inflater.inflate(R.layout.brick_choose_file, parent, false);
+        if (attachToParent) {
+            parent.addView(viewInflate);
+        }
+        return bind(viewInflate);
+    }
+
+    public static BrickChooseFileBinding bind(View rootView) {
+        int i = R.id.brick_checkbox;
+        CheckBox checkBox = (CheckBox) ViewBindings.findChildViewById(rootView, R.id.brick_checkbox);
+        if (checkBox != null) {
+            i = R.id.brick_choose_file_layout;
+            BrickLayout brickLayout = (BrickLayout) ViewBindings.findChildViewById(rootView, R.id.brick_choose_file_layout);
+            if (brickLayout != null) {
+                i = R.id.brick_choose_file_type_spinner;
+                Spinner spinner = (Spinner) ViewBindings.findChildViewById(rootView, R.id.brick_choose_file_type_spinner);
+                if (spinner != null) {
+                    i = R.id.brick_choose_file_var_spinner;
+                    Spinner spinner2 = (Spinner) ViewBindings.findChildViewById(rootView, R.id.brick_choose_file_var_spinner);
+                    if (spinner2 != null) {
+                        return new BrickChooseFileBinding((LinearLayout) rootView, checkBox, brickLayout, spinner, spinner2);
+                    }
+                }
+            }
+        }
+        throw new NullPointerException("Missing required view with ID: ".concat(rootView.getResources().getResourceName(i)));
+    }
+}

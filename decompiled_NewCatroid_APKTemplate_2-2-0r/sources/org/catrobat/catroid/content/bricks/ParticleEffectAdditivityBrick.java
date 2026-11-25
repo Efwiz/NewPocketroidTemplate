@@ -1,0 +1,89 @@
+package org.catrobat.catroid.content.bricks;
+
+import android.content.Context;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.Spinner;
+import android.widget.SpinnerAdapter;
+import kotlin.Metadata;
+import kotlin.jvm.internal.DefaultConstructorMarker;
+import kotlin.jvm.internal.Intrinsics;
+import org.DanVexTeam.NewCatroidApkTemplate.R;
+import org.catrobat.catroid.content.Sprite;
+import org.catrobat.catroid.content.actions.ScriptSequenceAction;
+
+/* JADX WARN: Classes with same name are omitted, all sources:
+  NewCatroid_APKTemplate_2-2-0r.apk:assets/app-classes.jar:org/catrobat/catroid/content/bricks/ParticleEffectAdditivityBrick.class
+  classes14.dex
+ */
+/* JADX INFO: compiled from: ParticleEffectAdditivityBrick.kt */
+/* JADX INFO: loaded from: classes14.dex */
+@Metadata(d1 = {"\u0000J\n\u0002\u0018\u0002\n\u0002\u0018\u0002\n\u0000\n\u0002\u0010\b\n\u0002\b\u0003\n\u0002\u0010\u0002\n\u0000\n\u0002\u0018\u0002\n\u0000\n\u0002\u0018\u0002\n\u0000\n\u0002\u0018\u0002\n\u0002\u0010\u000e\n\u0000\n\u0002\u0018\u0002\n\u0000\n\u0002\u0018\u0002\n\u0000\n\u0002\u0018\u0002\n\u0002\b\u0003\n\u0002\u0018\u0002\n\u0002\b\u0004\u0018\u0000 \u001b2\u00020\u0001:\u0001\u001bB\u000f\u0012\b\b\u0002\u0010\u0002\u001a\u00020\u0003¢\u0006\u0002\u0010\u0004J\u0018\u0010\u0006\u001a\u00020\u00072\u0006\u0010\b\u001a\u00020\t2\u0006\u0010\n\u001a\u00020\u000bH\u0016J\u0018\u0010\f\u001a\n\u0012\u0006\u0012\u0004\u0018\u00010\u000e0\r2\u0006\u0010\u000f\u001a\u00020\u0010H\u0002J\b\u0010\u0011\u001a\u00020\u0012H\u0002J\u0010\u0010\u0013\u001a\u00020\u00142\u0006\u0010\u000f\u001a\u00020\u0010H\u0016J\b\u0010\u0015\u001a\u00020\u0003H\u0016J$\u0010\u0016\u001a\u00020\u00072\u0006\u0010\u0017\u001a\u00020\u00182\n\u0010\u0019\u001a\u0006\u0012\u0002\b\u00030\r2\u0006\u0010\u001a\u001a\u00020\u0012H\u0002R\u000e\u0010\u0005\u001a\u00020\u0003X\u0082\u000e¢\u0006\u0002\n\u0000¨\u0006\u001c"}, d2 = {"Lorg/catrobat/catroid/content/bricks/ParticleEffectAdditivityBrick;", "Lorg/catrobat/catroid/content/bricks/BrickBaseType;", "fadeType", "", "(I)V", "fadeSpinnerSelectionId", "addActionToSequence", "", "sprite", "Lorg/catrobat/catroid/content/Sprite;", "sequence", "Lorg/catrobat/catroid/content/actions/ScriptSequenceAction;", "createArrayAdapter", "Landroid/widget/ArrayAdapter;", "", "context", "Landroid/content/Context;", "createItemSelectedListener", "Landroid/widget/AdapterView$OnItemSelectedListener;", "getView", "Landroid/view/View;", "getViewResource", "setupAdditiveSpinner", "spinner", "Landroid/widget/Spinner;", "adapter", "onItemSelectedListener", "Companion", "catroid_apktemplateTemplateRelease"}, k = 1, mv = {1, 9, 0}, xi = 48)
+public final class ParticleEffectAdditivityBrick extends BrickBaseType {
+    public static final int OFF = 1;
+    public static final int ON = 0;
+    private int fadeSpinnerSelectionId;
+
+    public ParticleEffectAdditivityBrick() {
+        this(0, 1, null);
+    }
+
+    @Override // org.catrobat.catroid.content.bricks.BrickBaseType
+    public int getViewResource() {
+        return R.layout.brick_additive_particle_effect;
+    }
+
+    public ParticleEffectAdditivityBrick(int i) {
+        this.fadeSpinnerSelectionId = i;
+    }
+
+    public /* synthetic */ ParticleEffectAdditivityBrick(int i, int i2, DefaultConstructorMarker defaultConstructorMarker) {
+        this((i2 & 1) != 0 ? 0 : i);
+    }
+
+    @Override // org.catrobat.catroid.content.bricks.BrickBaseType, org.catrobat.catroid.content.bricks.Brick
+    public View getView(Context context) {
+        Intrinsics.checkNotNullParameter(context, "context");
+        super.getView(context);
+        Spinner spinner = (Spinner) this.view.findViewById(R.id.brick_additive_particle_effect_spinner);
+        Intrinsics.checkNotNull(spinner);
+        setupAdditiveSpinner(spinner, createArrayAdapter(context), createItemSelectedListener());
+        spinner.setSelection(this.fadeSpinnerSelectionId);
+        View view = this.view;
+        Intrinsics.checkNotNullExpressionValue(view, "view");
+        return view;
+    }
+
+    private final void setupAdditiveSpinner(Spinner spinner, ArrayAdapter<?> adapter, AdapterView.OnItemSelectedListener onItemSelectedListener) {
+        spinner.setAdapter((SpinnerAdapter) adapter);
+        spinner.setOnItemSelectedListener(onItemSelectedListener);
+    }
+
+    private final ArrayAdapter<String> createArrayAdapter(Context context) {
+        ArrayAdapter<String> arrayAdapter = new ArrayAdapter<>(context, android.R.layout.simple_spinner_item, new String[]{context.getString(R.string.particle_effects_additive_on), context.getString(R.string.particle_effects_additive_off)});
+        arrayAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        return arrayAdapter;
+    }
+
+    private final AdapterView.OnItemSelectedListener createItemSelectedListener() {
+        return new AdapterView.OnItemSelectedListener() { // from class: org.catrobat.catroid.content.bricks.ParticleEffectAdditivityBrick.createItemSelectedListener.1
+            @Override // android.widget.AdapterView.OnItemSelectedListener
+            public void onNothingSelected(AdapterView<?> adapterView) {
+            }
+
+            @Override // android.widget.AdapterView.OnItemSelectedListener
+            public void onItemSelected(AdapterView<?> adapterView, View view, int position, long l) {
+                Intrinsics.checkNotNullParameter(view, "view");
+                ParticleEffectAdditivityBrick.this.fadeSpinnerSelectionId = position;
+            }
+        };
+    }
+
+    @Override // org.catrobat.catroid.content.bricks.Brick
+    public void addActionToSequence(Sprite sprite, ScriptSequenceAction sequence) {
+        Intrinsics.checkNotNullParameter(sprite, "sprite");
+        Intrinsics.checkNotNullParameter(sequence, "sequence");
+        sequence.addAction(sprite.getActionFactory().createAdditiveParticleEffectsAction(sprite, this.fadeSpinnerSelectionId == 0));
+    }
+}

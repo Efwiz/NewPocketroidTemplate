@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="PocketPaintTheme.Base" parent="@style/Theme.MaterialComponents.NoActionBar.Bridge">
+        <item name="android:buttonStyle">@style/CustomButtonStyle</item>
+        <item name="android:buttonStyleToggle">@style/CustomToggleButtonStyle</item>
+        <item name="android:windowBackground">@color/pocketpaint_colorPrimary</item>
+        <item name="android:textViewStyle">@style/CustomTextViewStyle</item>
+        <item name="android:forceDarkAllowed">false</item>
+        <item name="actionBarStyle">@style/ThemeOverlay.AppCompat.Dark.ActionBar</item>
+        <item name="bottomNavigationStyle">@style/CustomBottomNavigationViewStyle</item>
+        <item name="colorAccent">@color/pocketpaint_colorAccent</item>
+        <item name="colorButtonNormal">@color/pocketpaint_lighter_gray</item>
+        <item name="colorControlActivated">?attr/colorAccent</item>
+        <item name="colorPrimary">@color/pocketpaint_colorPrimary</item>
+        <item name="colorPrimaryDark">@color/pocketpaint_colorPrimaryDark</item>
+        <item name="colorSurface">@color/design_default_color_surface</item>
+        <item name="dialogTheme">@style/PocketPaintAlertDialog</item>
+        <item name="editTextStyle">@style/CustomEditTextStyle</item>
+        <item name="seekBarStyle">@style/CustomSeekBarStyle</item>
+        <item name="spinnerStyle">@style/CustomSpinnerStyle</item>
+    </style>
+</resources>

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:gravity="center_vertical"
+    android:orientation="horizontal"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="4dp">
+    <TextView
+        android:textSize="12sp"
+        android:textColor="#cccccc"
+        android:id="@+id/text_param_name"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="Parameter"
+        android:layout_weight="1"/>
+    <EditText
+        android:textSize="12sp"
+        android:id="@+id/edit_param_value"
+        android:layout_width="80dp"
+        android:layout_height="wrap_content"
+        android:inputType="numberDecimal"
+        style="@style/InspectorEditText"/>
+</LinearLayout>

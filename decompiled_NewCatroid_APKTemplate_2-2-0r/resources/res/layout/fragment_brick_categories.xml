@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ListView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/brick_category_list"
+    android:tag="app_background"
+    android:background="@color/app_background"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:cacheColorHint="#00000000"
+    android:divider="@android:color/transparent"/>

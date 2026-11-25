@@ -1,0 +1,56 @@
+package com.badlogic.gdx.physics.bullet.collision;
+
+/* JADX INFO: loaded from: classes8.dex */
+public class GIM_QUANTIZED_BVH_NODE_ARRAY extends btGimQuantizedBvhNodeArray {
+    private long swigCPtr;
+
+    protected GIM_QUANTIZED_BVH_NODE_ARRAY(String str, long j, boolean z) {
+        super(str, CollisionJNI.GIM_QUANTIZED_BVH_NODE_ARRAY_SWIGUpcast(j), z);
+        this.swigCPtr = j;
+    }
+
+    public GIM_QUANTIZED_BVH_NODE_ARRAY(long j, boolean z) {
+        this("GIM_QUANTIZED_BVH_NODE_ARRAY", j, z);
+        construct();
+    }
+
+    @Override // com.badlogic.gdx.physics.bullet.collision.btGimQuantizedBvhNodeArray, com.badlogic.gdx.physics.bullet.BulletBase
+    protected void reset(long j, boolean z) {
+        if (!this.destroyed) {
+            destroy();
+        }
+        this.swigCPtr = j;
+        super.reset(CollisionJNI.GIM_QUANTIZED_BVH_NODE_ARRAY_SWIGUpcast(j), z);
+    }
+
+    public static long getCPtr(GIM_QUANTIZED_BVH_NODE_ARRAY gim_quantized_bvh_node_array) {
+        if (gim_quantized_bvh_node_array == null) {
+            return 0L;
+        }
+        return gim_quantized_bvh_node_array.swigCPtr;
+    }
+
+    @Override // com.badlogic.gdx.physics.bullet.collision.btGimQuantizedBvhNodeArray, com.badlogic.gdx.physics.bullet.BulletBase
+    protected void finalize() throws Throwable {
+        if (!this.destroyed) {
+            destroy();
+        }
+        super.finalize();
+    }
+
+    @Override // com.badlogic.gdx.physics.bullet.collision.btGimQuantizedBvhNodeArray, com.badlogic.gdx.physics.bullet.BulletBase
+    protected synchronized void delete() {
+        if (this.swigCPtr != 0) {
+            if (this.swigCMemOwn) {
+                this.swigCMemOwn = false;
+                CollisionJNI.delete_GIM_QUANTIZED_BVH_NODE_ARRAY(this.swigCPtr);
+            }
+            this.swigCPtr = 0L;
+        }
+        super.delete();
+    }
+
+    public GIM_QUANTIZED_BVH_NODE_ARRAY() {
+        this(CollisionJNI.new_GIM_QUANTIZED_BVH_NODE_ARRAY(), true);
+    }
+}

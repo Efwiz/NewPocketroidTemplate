@@ -1,0 +1,18 @@
+package org.eclipse.jdt.internal.compiler.lookup;
+
+/* JADX INFO: loaded from: classes14.dex */
+public class MostSpecificExceptionMethodBinding extends MethodBinding {
+    private MethodBinding originalMethod;
+
+    public MostSpecificExceptionMethodBinding(MethodBinding methodBinding, ReferenceBinding[] referenceBindingArr) {
+        super(methodBinding.modifiers, methodBinding.selector, methodBinding.returnType, methodBinding.parameters, referenceBindingArr, methodBinding.declaringClass);
+        this.originalMethod = methodBinding;
+        this.parameterNonNullness = methodBinding.parameterNonNullness;
+        this.defaultNullness = methodBinding.defaultNullness;
+    }
+
+    @Override // org.eclipse.jdt.internal.compiler.lookup.MethodBinding
+    public MethodBinding original() {
+        return this.originalMethod.original();
+    }
+}

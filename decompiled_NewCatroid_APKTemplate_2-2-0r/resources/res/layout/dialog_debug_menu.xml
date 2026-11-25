@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:background="@drawable/dialog_background"
+    android:layout_width="300dp"
+    android:layout_height="wrap_content">
+    <LinearLayout xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:id="@+id/title_bar"
+        android:tag="toolbar_background"
+        android:background="@color/toolbar_background"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:paddingStart="8dp"
+        android:paddingEnd="8dp">
+        <TextView
+            android:textStyle="bold"
+            android:textColor="@android:color/white"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="Debug Menu"
+            android:layout_weight="1"/>
+        <ImageButton
+            android:id="@+id/btn_record_logs"
+            android:background="@android:color/transparent"
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:src="@drawable/ic_debug_record"
+            android:contentDescription="@null"
+            android:layout_marginEnd="8dp"
+            app:tint="@color/accent"/>
+        <ImageButton
+            android:id="@+id/close_button"
+            android:background="@android:color/transparent"
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:src="@drawable/ic_close"
+            app:tint="@android:color/white"/>
+    </LinearLayout>
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:maxHeight="300dp">
+        <LinearLayout
+            android:orientation="vertical"
+            android:id="@+id/variables_container"
+            android:padding="8dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+    </ScrollView>
+</LinearLayout>

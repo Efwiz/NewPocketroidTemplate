@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:gravity="center_vertical"
+    android:orientation="horizontal"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+    <CheckBox
+        android:gravity="center_vertical"
+        android:id="@+id/brick_checkbox"
+        android:visibility="gone"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+    <org.catrobat.catroid.ui.BrickLayout
+        android:id="@+id/brick_create_web_url_layout"
+        style="@style/BrickContainer.Device.Big">
+        <include layout="@layout/icon_brick_category_device"/>
+        <TextView
+            android:text="@string/create_web_url"
+            style="@style/BrickText.SingleLine"/>
+        <TextView
+            android:id="@+id/create_web_url_name"
+            style="@style/BrickEditText"/>
+        <TextView
+            android:text="@string/create_web_url2"
+            app:layout_newLine="true"
+            style="@style/BrickText.SingleLine"/>
+        <TextView
+            android:id="@+id/create_web_url_url"
+            style="@style/BrickEditText"/>
+        <TextView
+            android:text="@string/create_web_url3"
+            app:layout_newLine="true"
+            style="@style/BrickText.SingleLine"/>
+        <TextView
+            android:id="@+id/create_web_url_x"
+            style="@style/BrickEditText"/>
+        <TextView
+            android:id="@+id/create_web_url_y"
+            style="@style/BrickEditText"/>
+        <TextView
+            android:text="@string/create_web_url4"
+            app:layout_newLine="true"
+            style="@style/BrickText.SingleLine"/>
+        <TextView
+            android:id="@+id/create_web_url_width"
+            style="@style/BrickEditText"/>
+        <TextView
+            android:id="@+id/create_web_url_height"
+            style="@style/BrickEditText"/>
+    </org.catrobat.catroid.ui.BrickLayout>
+</LinearLayout>

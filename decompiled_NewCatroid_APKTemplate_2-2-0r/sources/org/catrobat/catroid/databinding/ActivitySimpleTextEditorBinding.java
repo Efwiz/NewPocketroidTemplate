@@ -1,0 +1,58 @@
+package org.catrobat.catroid.databinding;
+
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.EditText;
+import android.widget.LinearLayout;
+import androidx.appcompat.widget.Toolbar;
+import androidx.viewbinding.ViewBinding;
+import androidx.viewbinding.ViewBindings;
+import org.DanVexTeam.NewCatroidApkTemplate.R;
+
+/* JADX WARN: Classes with same name are omitted, all sources:
+  NewCatroid_APKTemplate_2-2-0r.apk:assets/app-classes.jar:org/catrobat/catroid/databinding/ActivitySimpleTextEditorBinding.class
+  classes14.dex
+ */
+/* JADX INFO: loaded from: classes14.dex */
+public final class ActivitySimpleTextEditorBinding implements ViewBinding {
+    public final EditText editorEditText;
+    private final LinearLayout rootView;
+    public final Toolbar toolbar;
+
+    private ActivitySimpleTextEditorBinding(LinearLayout rootView, EditText editorEditText, Toolbar toolbar) {
+        this.rootView = rootView;
+        this.editorEditText = editorEditText;
+        this.toolbar = toolbar;
+    }
+
+    @Override // androidx.viewbinding.ViewBinding
+    public LinearLayout getRoot() {
+        return this.rootView;
+    }
+
+    public static ActivitySimpleTextEditorBinding inflate(LayoutInflater inflater) {
+        return inflate(inflater, null, false);
+    }
+
+    public static ActivitySimpleTextEditorBinding inflate(LayoutInflater inflater, ViewGroup parent, boolean attachToParent) {
+        View viewInflate = inflater.inflate(R.layout.activity_simple_text_editor, parent, false);
+        if (attachToParent) {
+            parent.addView(viewInflate);
+        }
+        return bind(viewInflate);
+    }
+
+    public static ActivitySimpleTextEditorBinding bind(View rootView) {
+        int i = R.id.editorEditText;
+        EditText editText = (EditText) ViewBindings.findChildViewById(rootView, R.id.editorEditText);
+        if (editText != null) {
+            i = R.id.toolbar;
+            Toolbar toolbar = (Toolbar) ViewBindings.findChildViewById(rootView, R.id.toolbar);
+            if (toolbar != null) {
+                return new ActivitySimpleTextEditorBinding((LinearLayout) rootView, editText, toolbar);
+            }
+        }
+        throw new NullPointerException("Missing required view with ID: ".concat(rootView.getResources().getResourceName(i)));
+    }
+}

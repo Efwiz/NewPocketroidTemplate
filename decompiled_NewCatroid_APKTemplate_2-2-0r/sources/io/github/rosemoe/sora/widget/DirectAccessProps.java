@@ -1,0 +1,63 @@
+package io.github.rosemoe.sora.widget;
+
+import com.leff.midi.event.meta.Tempo;
+import java.io.Serializable;
+
+/* JADX INFO: loaded from: classes11.dex */
+public class DirectAccessProps implements Serializable {
+    public static final int LN_ACTION_NOTHING = 0;
+    public static final int LN_ACTION_PLACE_SELECTION_HOME = 2;
+    public static final int LN_ACTION_SELECT_LINE = 1;
+    public static final int MOUSE_MODE_ALWAYS = 1;
+    public static final int MOUSE_MODE_AUTO = 0;
+    public static final int MOUSE_MODE_NEVER = 2;
+    public final SymbolPairMatch overrideSymbolPairs = new SymbolPairMatch();
+    public boolean deleteEmptyLineFast = true;
+    public int deleteMultiSpaces = 1;
+    public boolean allowFullscreen = false;
+    public boolean symbolPairAutoCompletion = true;
+    public boolean autoCompletionOnComposing = true;
+    public boolean autoIndent = true;
+    public boolean disallowSuggestions = false;
+    public int maxIPCTextLength = Tempo.DEFAULT_MPQN;
+    public boolean overScrollEnabled = false;
+    public boolean scrollFling = true;
+    public long cancelCompletionNs = 70000000;
+    public boolean adjustToSelectionOnResize = true;
+    public boolean awareScrollbarWhenAdjust = false;
+    public float indicatorWaveLength = 18.0f;
+    public float indicatorWaveWidth = 0.9f;
+    public float indicatorWaveAmplitude = 4.0f;
+    public boolean trackComposingTextOnCommit = true;
+    public boolean minimizeComposingTextUpdate = true;
+    public boolean drawSideBlockLine = true;
+    public boolean cacheRenderNodeForLongLines = false;
+    public boolean useICULibToSelectWords = true;
+    public boolean highlightMatchingDelimiters = true;
+    public boolean boldMatchingDelimiters = true;
+    public boolean enableRoundTextBackground = true;
+    public boolean textBackgroundWrapTextOnly = false;
+    public boolean positionOfCursorWhenExitSelecting = true;
+    public boolean drawCustomLineBgOnCurrentLine = false;
+    public float roundTextBackgroundFactor = 0.13f;
+    public float sideIconSizeFactor = 0.7f;
+    public final float miniMarkerSizeFactor = 0.85f;
+    public int actionWhenLineNumberClicked = 2;
+    public boolean formatPastedText = false;
+    public boolean enhancedHomeAndEnd = true;
+    public int hardwrapColumn = 0;
+    public boolean reselectOnLongPress = true;
+    public boolean showSelectionWhenSelected = false;
+    public int clipboardTextLengthLimit = 524288;
+    public float fastScrollSensitivity = 5.0f;
+    public boolean stickyScroll = false;
+    public int stickyScrollMaxLines = 3;
+    public boolean stickyScrollPreferInnerScope = false;
+    public int stickyScrollIterationLimit = 1000;
+    public boolean stickyScrollAutoCollapse = true;
+    public boolean singleDirectionFling = true;
+    public boolean reportCursorAnchor = true;
+    public boolean placeSelOnPreviousLineAfterCut = false;
+    public int mouseMode = 0;
+    public boolean mouseContextMenu = true;
+}

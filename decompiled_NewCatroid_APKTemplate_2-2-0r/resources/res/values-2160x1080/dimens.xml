@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="mlkit_asr_background_corner">16dp</dimen>
+    <dimen name="mlkit_asr_logo_height">55dp</dimen>
+    <dimen name="mlkit_asr_text_size">18sp</dimen>
+</resources>

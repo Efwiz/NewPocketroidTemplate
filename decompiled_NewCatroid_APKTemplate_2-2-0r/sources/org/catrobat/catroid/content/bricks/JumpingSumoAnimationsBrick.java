@@ -1,0 +1,78 @@
+package org.catrobat.catroid.content.bricks;
+
+import android.content.Context;
+import android.view.View;
+import android.widget.ArrayAdapter;
+import android.widget.Spinner;
+import android.widget.SpinnerAdapter;
+import kotlin.Unit;
+import kotlin.jvm.functions.Function1;
+import org.DanVexTeam.NewCatroidApkTemplate.R;
+import org.catrobat.catroid.content.AdapterViewOnItemSelectedListenerImpl;
+import org.catrobat.catroid.content.Sprite;
+import org.catrobat.catroid.content.actions.ScriptSequenceAction;
+
+/* JADX WARN: Classes with same name are omitted, all sources:
+  NewCatroid_APKTemplate_2-2-0r.apk:assets/app-classes.jar:org/catrobat/catroid/content/bricks/JumpingSumoAnimationsBrick.class
+  classes14.dex
+ */
+/* JADX INFO: loaded from: classes14.dex */
+public class JumpingSumoAnimationsBrick extends BrickBaseType {
+    private static final long serialVersionUID = 1;
+    private String animationName;
+
+    /* JADX WARN: Classes with same name are omitted, all sources:
+      NewCatroid_APKTemplate_2-2-0r.apk:assets/app-classes.jar:org/catrobat/catroid/content/bricks/JumpingSumoAnimationsBrick$Animation.class
+      classes14.dex
+     */
+    public enum Animation {
+        SPIN,
+        TAB,
+        SLOWSHAKE,
+        METRONOME,
+        ONDULATION,
+        SPINJUMP,
+        SPIRAL,
+        SLALOM
+    }
+
+    @Override // org.catrobat.catroid.content.bricks.Brick
+    public void addActionToSequence(Sprite sprite, ScriptSequenceAction sequence) {
+    }
+
+    @Override // org.catrobat.catroid.content.bricks.BrickBaseType
+    public int getViewResource() {
+        return R.layout.brick_jumping_sumo_animations;
+    }
+
+    public JumpingSumoAnimationsBrick() {
+        this.animationName = Animation.SPIN.name();
+    }
+
+    public JumpingSumoAnimationsBrick(Animation animation) {
+        this.animationName = animation.name();
+    }
+
+    @Override // org.catrobat.catroid.content.bricks.BrickBaseType, org.catrobat.catroid.content.bricks.Brick
+    public View getView(Context context) {
+        super.getView(context);
+        ArrayAdapter<CharSequence> arrayAdapterCreateFromResource = ArrayAdapter.createFromResource(context, R.array.brick_jumping_sumo_select_animation_spinner, android.R.layout.simple_spinner_item);
+        arrayAdapterCreateFromResource.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        Spinner spinner = (Spinner) this.view.findViewById(R.id.brick_jumping_sumo_animation_spinner);
+        spinner.setAdapter((SpinnerAdapter) arrayAdapterCreateFromResource);
+        spinner.setOnItemSelectedListener(new AdapterViewOnItemSelectedListenerImpl(new Function1() { // from class: org.catrobat.catroid.content.bricks.JumpingSumoAnimationsBrick$$ExternalSyntheticLambda0
+            @Override // kotlin.jvm.functions.Function1
+            public final Object invoke(Object obj) {
+                return this.f$0.m4923x6059901a((Integer) obj);
+            }
+        }));
+        spinner.setSelection(Animation.valueOf(this.animationName).ordinal());
+        return this.view;
+    }
+
+    /* JADX INFO: renamed from: lambda$getView$0$org-catrobat-catroid-content-bricks-JumpingSumoAnimationsBrick, reason: not valid java name */
+    /* synthetic */ Unit m4923x6059901a(Integer num) {
+        this.animationName = Animation.values()[num.intValue()].name();
+        return Unit.INSTANCE;
+    }
+}

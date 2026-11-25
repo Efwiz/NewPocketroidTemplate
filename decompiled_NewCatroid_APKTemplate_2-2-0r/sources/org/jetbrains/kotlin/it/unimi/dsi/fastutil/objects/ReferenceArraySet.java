@@ -1,0 +1,260 @@
+package org.jetbrains.kotlin.it.unimi.dsi.fastutil.objects;
+
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
+import java.io.Serializable;
+import java.lang.reflect.Array;
+import java.util.Arrays;
+import java.util.NoSuchElementException;
+import java.util.function.Consumer;
+
+/* JADX INFO: loaded from: classes5.dex */
+public class ReferenceArraySet<K> extends AbstractReferenceSet<K> implements Serializable, Cloneable {
+    private static final long serialVersionUID = 1;
+    private transient Object[] a;
+    private int size;
+
+    static /* synthetic */ int access$010(ReferenceArraySet referenceArraySet) {
+        int i = referenceArraySet.size;
+        referenceArraySet.size = i - 1;
+        return i;
+    }
+
+    public ReferenceArraySet(Object[] objArr) {
+        this.a = objArr;
+        this.size = objArr.length;
+    }
+
+    public ReferenceArraySet() {
+        this.a = ObjectArrays.EMPTY_ARRAY;
+    }
+
+    private int findKey(Object obj) {
+        int i = this.size;
+        while (true) {
+            int i2 = i - 1;
+            if (i == 0) {
+                return -1;
+            }
+            if (this.a[i2] == obj) {
+                return i2;
+            }
+            i = i2;
+        }
+    }
+
+    @Override // org.jetbrains.kotlin.it.unimi.dsi.fastutil.objects.AbstractReferenceSet, org.jetbrains.kotlin.it.unimi.dsi.fastutil.objects.AbstractReferenceCollection, java.util.AbstractCollection, java.util.Collection, java.lang.Iterable, org.jetbrains.kotlin.it.unimi.dsi.fastutil.objects.ReferenceCollection, org.jetbrains.kotlin.it.unimi.dsi.fastutil.objects.ObjectIterable, org.jetbrains.kotlin.it.unimi.dsi.fastutil.objects.ObjectCollection
+    public ObjectIterator<K> iterator() {
+        return new ObjectIterator<K>() { // from class: org.jetbrains.kotlin.it.unimi.dsi.fastutil.objects.ReferenceArraySet.1
+            int next = 0;
+
+            @Override // java.util.Iterator
+            public boolean hasNext() {
+                return this.next < ReferenceArraySet.this.size;
+            }
+
+            @Override // java.util.Iterator
+            public K next() {
+                if (hasNext()) {
+                    Object[] objArr = ReferenceArraySet.this.a;
+                    int i = this.next;
+                    this.next = i + 1;
+                    return (K) objArr[i];
+                }
+                throw new NoSuchElementException();
+            }
+
+            @Override // java.util.Iterator
+            public void remove() {
+                int iAccess$010 = ReferenceArraySet.access$010(ReferenceArraySet.this);
+                int i = this.next;
+                this.next = i - 1;
+                System.arraycopy(ReferenceArraySet.this.a, this.next + 1, ReferenceArraySet.this.a, this.next, iAccess$010 - i);
+                ReferenceArraySet.this.a[ReferenceArraySet.this.size] = null;
+            }
+        };
+    }
+
+    private final class Spliterator implements ObjectSpliterator<K> {
+        static final /* synthetic */ boolean $assertionsDisabled = false;
+        boolean hasSplit;
+        int max;
+        int pos;
+
+        @Override // java.util.Spliterator
+        public int characteristics() {
+            return 16465;
+        }
+
+        public Spliterator(ReferenceArraySet referenceArraySet) {
+            this(0, referenceArraySet.size, false);
+        }
+
+        private Spliterator(int i, int i2, boolean z) {
+            this.pos = i;
+            this.max = i2;
+            this.hasSplit = z;
+        }
+
+        private int getWorkingMax() {
+            return this.hasSplit ? this.max : ReferenceArraySet.this.size;
+        }
+
+        @Override // java.util.Spliterator
+        public long estimateSize() {
+            return getWorkingMax() - this.pos;
+        }
+
+        @Override // java.util.Spliterator
+        public boolean tryAdvance(Consumer<? super K> consumer) {
+            if (this.pos >= getWorkingMax()) {
+                return false;
+            }
+            Object[] objArr = ReferenceArraySet.this.a;
+            int i = this.pos;
+            this.pos = i + 1;
+            consumer.accept(objArr[i]);
+            return true;
+        }
+
+        @Override // java.util.Spliterator
+        public void forEachRemaining(Consumer<? super K> consumer) {
+            int workingMax = getWorkingMax();
+            while (this.pos < workingMax) {
+                consumer.accept(ReferenceArraySet.this.a[this.pos]);
+                this.pos++;
+            }
+        }
+
+        @Override // org.jetbrains.kotlin.it.unimi.dsi.fastutil.objects.ObjectSpliterator, java.util.Spliterator
+        public ObjectSpliterator<K> trySplit() {
+            int workingMax = getWorkingMax();
+            int i = this.pos;
+            int i2 = (workingMax - i) >> 1;
+            if (i2 <= 1) {
+                return null;
+            }
+            this.max = workingMax;
+            int i3 = i2 + i;
+            this.pos = i3;
+            this.hasSplit = true;
+            return new Spliterator(i, i3, true);
+        }
+    }
+
+    @Override // java.util.Collection, java.lang.Iterable, org.jetbrains.kotlin.it.unimi.dsi.fastutil.objects.ReferenceCollection, org.jetbrains.kotlin.it.unimi.dsi.fastutil.objects.ObjectIterable, org.jetbrains.kotlin.it.unimi.dsi.fastutil.objects.ObjectCollection
+    public ObjectSpliterator<K> spliterator() {
+        return new Spliterator(this);
+    }
+
+    @Override // java.util.AbstractCollection, java.util.Collection, java.util.Set
+    public boolean contains(Object obj) {
+        return findKey(obj) != -1;
+    }
+
+    @Override // java.util.AbstractCollection, java.util.Collection, java.util.Set
+    public int size() {
+        return this.size;
+    }
+
+    @Override // java.util.AbstractCollection, java.util.Collection, java.util.Set
+    public boolean remove(Object obj) {
+        int iFindKey = findKey(obj);
+        if (iFindKey == -1) {
+            return false;
+        }
+        int i = (this.size - iFindKey) - 1;
+        for (int i2 = 0; i2 < i; i2++) {
+            Object[] objArr = this.a;
+            int i3 = iFindKey + i2;
+            objArr[i3] = objArr[i3 + 1];
+        }
+        int i4 = this.size - 1;
+        this.size = i4;
+        this.a[i4] = null;
+        return true;
+    }
+
+    @Override // java.util.AbstractCollection, java.util.Collection, java.util.Set
+    public boolean add(K k) {
+        if (findKey(k) != -1) {
+            return false;
+        }
+        int i = this.size;
+        if (i == this.a.length) {
+            Object[] objArr = new Object[i == 0 ? 2 : i * 2];
+            while (true) {
+                int i2 = i - 1;
+                if (i == 0) {
+                    break;
+                }
+                objArr[i2] = this.a[i2];
+                i = i2;
+            }
+            this.a = objArr;
+        }
+        Object[] objArr2 = this.a;
+        int i3 = this.size;
+        this.size = i3 + 1;
+        objArr2[i3] = k;
+        return true;
+    }
+
+    @Override // java.util.AbstractCollection, java.util.Collection, java.util.Set
+    public void clear() {
+        Arrays.fill(this.a, 0, this.size, (Object) null);
+        this.size = 0;
+    }
+
+    @Override // java.util.AbstractCollection, java.util.Collection, java.util.Set
+    public boolean isEmpty() {
+        return this.size == 0;
+    }
+
+    @Override // java.util.AbstractCollection, java.util.Collection, java.util.Set
+    public Object[] toArray() {
+        return Arrays.copyOf(this.a, this.size, Object[].class);
+    }
+
+    @Override // java.util.AbstractCollection, java.util.Collection, java.util.Set
+    public <K> K[] toArray(K[] kArr) {
+        if (kArr == null) {
+            kArr = (K[]) new Object[this.size];
+        } else if (kArr.length < this.size) {
+            kArr = (K[]) ((Object[]) Array.newInstance(kArr.getClass().getComponentType(), this.size));
+        }
+        System.arraycopy(this.a, 0, kArr, 0, this.size);
+        int length = kArr.length;
+        int i = this.size;
+        if (length > i) {
+            kArr[i] = null;
+        }
+        return kArr;
+    }
+
+    public ReferenceArraySet<K> clone() {
+        try {
+            ReferenceArraySet<K> referenceArraySet = (ReferenceArraySet) super.clone();
+            referenceArraySet.a = (Object[]) this.a.clone();
+            return referenceArraySet;
+        } catch (CloneNotSupportedException unused) {
+            throw new InternalError();
+        }
+    }
+
+    private void writeObject(ObjectOutputStream objectOutputStream) throws IOException {
+        objectOutputStream.defaultWriteObject();
+        for (int i = 0; i < this.size; i++) {
+            objectOutputStream.writeObject(this.a[i]);
+        }
+    }
+
+    private void readObject(ObjectInputStream objectInputStream) throws ClassNotFoundException, IOException {
+        objectInputStream.defaultReadObject();
+        this.a = new Object[this.size];
+        for (int i = 0; i < this.size; i++) {
+            this.a[i] = objectInputStream.readObject();
+        }
+    }
+}

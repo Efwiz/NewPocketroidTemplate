@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:icon="@drawable/ic_project_files"
+        android:id="@+id/menu_files"
+        android:title="@string/dialog_project_files_title"
+        app:showAsAction="always"/>
+    <item
+        android:icon="@drawable/icon_undo"
+        android:id="@+id/menu_undo"
+        android:title="@string/undo"
+        app:showAsAction="ifRoom"/>
+    <item
+        android:icon="@drawable/icon_redo"
+        android:id="@+id/menu_redo"
+        android:title="@string/redo"
+        app:showAsAction="ifRoom"/>
+</menu>

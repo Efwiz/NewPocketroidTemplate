@@ -1,0 +1,77 @@
+package com.google.android.gms.internal.mlkit_vision_text;
+
+import java.util.AbstractSet;
+import java.util.Iterator;
+import java.util.Map;
+import org.checkerframework.checker.nullness.compatqual.NullableDecl;
+
+/* JADX INFO: compiled from: com.google.android.gms:play-services-mlkit-text-recognition@@16.1.3 */
+/* JADX INFO: loaded from: classes9.dex */
+final class zzaw extends AbstractSet<Map.Entry> {
+    final /* synthetic */ zzbb zza;
+
+    zzaw(zzbb zzbbVar) {
+        this.zza = zzbbVar;
+    }
+
+    @Override // java.util.AbstractCollection, java.util.Collection, java.util.Set
+    public final void clear() {
+        this.zza.clear();
+    }
+
+    @Override // java.util.AbstractCollection, java.util.Collection, java.util.Set
+    public final boolean contains(@NullableDecl Object obj) {
+        Map mapZzc = this.zza.zzc();
+        if (mapZzc != null) {
+            return mapZzc.entrySet().contains(obj);
+        }
+        if (obj instanceof Map.Entry) {
+            Map.Entry entry = (Map.Entry) obj;
+            int iZzr = this.zza.zzr(entry.getKey());
+            if (iZzr != -1 && zzw.zza(this.zza.zzc[iZzr], entry.getValue())) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    @Override // java.util.AbstractCollection, java.util.Collection, java.lang.Iterable, java.util.Set
+    public final Iterator<Map.Entry> iterator() {
+        zzbb zzbbVar = this.zza;
+        Map mapZzc = zzbbVar.zzc();
+        return mapZzc != null ? mapZzc.entrySet().iterator() : new zzau(zzbbVar);
+    }
+
+    @Override // java.util.AbstractCollection, java.util.Collection, java.util.Set
+    public final boolean remove(@NullableDecl Object obj) {
+        Map mapZzc = this.zza.zzc();
+        if (mapZzc != null) {
+            return mapZzc.entrySet().remove(obj);
+        }
+        if (!(obj instanceof Map.Entry)) {
+            return false;
+        }
+        Map.Entry entry = (Map.Entry) obj;
+        if (this.zza.zzb()) {
+            return false;
+        }
+        int iZzp = this.zza.zzp();
+        Object key = entry.getKey();
+        Object value = entry.getValue();
+        Object obj2 = this.zza.zze;
+        zzbb zzbbVar = this.zza;
+        int iZze = zzbc.zze(key, value, iZzp, obj2, zzbbVar.zza, zzbbVar.zzb, zzbbVar.zzc);
+        if (iZze == -1) {
+            return false;
+        }
+        this.zza.zze(iZze, iZzp);
+        zzbb.zzn(this.zza);
+        this.zza.zzd();
+        return true;
+    }
+
+    @Override // java.util.AbstractCollection, java.util.Collection, java.util.Set
+    public final int size() {
+        return this.zza.size();
+    }
+}

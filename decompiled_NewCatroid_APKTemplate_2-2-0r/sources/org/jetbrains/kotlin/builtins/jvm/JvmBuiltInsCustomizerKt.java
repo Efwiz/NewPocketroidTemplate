@@ -1,0 +1,22 @@
+package org.jetbrains.kotlin.builtins.jvm;
+
+import kotlin.Metadata;
+import kotlin.jvm.internal.Intrinsics;
+import org.jetbrains.kotlin.name.Name;
+
+/* JADX INFO: compiled from: JvmBuiltInsCustomizer.kt */
+/* JADX INFO: loaded from: classes2.dex */
+@Metadata(d1 = {"\u0000\n\n\u0000\n\u0002\u0018\u0002\n\u0002\b\u0002\"\u000e\u0010\u0000\u001a\u00020\u0001X\u0082\u0004¢\u0006\u0002\n\u0000\"\u000e\u0010\u0002\u001a\u00020\u0001X\u0082\u0004¢\u0006\u0002\n\u0000¨\u0006\u0003"}, d2 = {"GET_FIRST_LIST_NAME", "Lorg/jetbrains/kotlin/name/Name;", "GET_LAST_LIST_NAME", "descriptors.jvm"}, k = 2, mv = {1, 9, 0}, xi = 48)
+public final class JvmBuiltInsCustomizerKt {
+    private static final Name GET_FIRST_LIST_NAME;
+    private static final Name GET_LAST_LIST_NAME;
+
+    static {
+        Name nameIdentifier = Name.identifier("getFirst");
+        Intrinsics.checkNotNullExpressionValue(nameIdentifier, "identifier(...)");
+        GET_FIRST_LIST_NAME = nameIdentifier;
+        Name nameIdentifier2 = Name.identifier("getLast");
+        Intrinsics.checkNotNullExpressionValue(nameIdentifier2, "identifier(...)");
+        GET_LAST_LIST_NAME = nameIdentifier2;
+    }
+}

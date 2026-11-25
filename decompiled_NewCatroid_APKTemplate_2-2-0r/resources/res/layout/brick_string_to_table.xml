@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:gravity="center_vertical"
+    android:orientation="horizontal"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+    <CheckBox
+        android:gravity="center_vertical"
+        android:id="@+id/brick_checkbox"
+        android:visibility="gone"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+    <org.catrobat.catroid.ui.BrickLayout
+        android:id="@+id/brick_string_to_table_layout"
+        style="@style/BrickContainer.UserVariables.Big">
+        <include layout="@layout/icon_brick_category_data"/>
+        <TextView
+            android:text="@string/brick_string_to_table"
+            style="@style/BrickText.SingleLine"/>
+        <TextView
+            android:id="@+id/brick_string_to_table_edit_str"
+            style="@style/BrickEditText"/>
+        <TextView
+            android:text="@string/brick_string_to_table_x"
+            app:layout_newLine="true"
+            style="@style/BrickText.SingleLine"/>
+        <TextView
+            android:id="@+id/brick_string_to_table_edit_x"
+            style="@style/BrickEditText"/>
+        <TextView
+            android:text="@string/brick_string_to_table_y"
+            app:layout_newLine="true"
+            style="@style/BrickText.SingleLine"/>
+        <TextView
+            android:id="@+id/brick_string_to_table_edit_y"
+            style="@style/BrickEditText"/>
+        <TextView
+            android:text="@string/brick_string_to_table_name"
+            app:layout_newLine="true"
+            style="@style/BrickText.SingleLine"/>
+        <TextView
+            android:id="@+id/brick_string_to_table_edit_name"
+            style="@style/BrickEditText"/>
+    </org.catrobat.catroid.ui.BrickLayout>
+</LinearLayout>

@@ -1,0 +1,13 @@
+package org.jetbrains.kotlin.com.intellij.psi.impl.source.tree;
+
+import java.util.Objects;
+import java.util.function.Predicate;
+
+/* JADX INFO: compiled from: D8$$SyntheticClass */
+/* JADX INFO: loaded from: classes3.dex */
+public final /* synthetic */ class ChangeUtil$$ExternalSyntheticLambda2 implements Predicate {
+    @Override // java.util.function.Predicate
+    public final boolean test(Object obj) {
+        return Objects.nonNull((TreeElement) obj);
+    }
+}

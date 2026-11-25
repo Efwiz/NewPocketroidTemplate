@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:gravity="center_vertical"
+    android:orientation="horizontal"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+    <CheckBox
+        android:gravity="center_vertical"
+        android:id="@+id/brick_checkbox"
+        android:visibility="gone"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+    <org.catrobat.catroid.ui.BrickLayout
+        android:id="@+id/brick_post_web_request_layout"
+        style="@style/BrickContainer.UserVariables.Big">
+        <include layout="@layout/icon_brick_category_data"/>
+        <TextView
+            android:text="@string/post_web_request"
+            style="@style/BrickText.SingleLine"/>
+        <TextView
+            android:id="@+id/brick_post_web_request_edit_url"
+            app:layout_newLine="true"
+            style="@style/BrickEditText"/>
+        <TextView
+            android:text="@string/post_web_request_header"
+            app:layout_newLine="true"
+            style="@style/BrickText.SingleLine"/>
+        <TextView
+            android:id="@+id/brick_post_web_request_edit_header"
+            app:layout_newLine="true"
+            style="@style/BrickEditText"/>
+        <TextView
+            android:text="@string/post_web_request_body"
+            app:layout_newLine="true"
+            style="@style/BrickText.SingleLine"/>
+        <TextView
+            android:id="@+id/brick_post_web_request_edit_body"
+            app:layout_newLine="true"
+            style="@style/BrickEditText"/>
+        <TextView
+            android:text="@string/post_web_request_var"
+            app:layout_newLine="true"
+            style="@style/BrickText.SingleLine"/>
+        <Spinner
+            android:id="@+id/post_web_request_spinner"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textDirection="locale"/>
+    </org.catrobat.catroid.ui.BrickLayout>
+</LinearLayout>

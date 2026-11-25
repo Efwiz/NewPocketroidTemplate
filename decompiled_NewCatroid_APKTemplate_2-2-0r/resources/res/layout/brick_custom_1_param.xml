@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:gravity="center_vertical"
+    android:orientation="horizontal"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+    <CheckBox
+        android:gravity="center_vertical"
+        android:id="@+id/brick_checkbox"
+        android:visibility="gone"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+    <org.catrobat.catroid.ui.BrickLayout
+        android:id="@+id/brick_custom_layout"
+        style="@style/BrickContainer.Libs.Medium">
+        <include layout="@layout/icon_brick_category_libs"/>
+        <TextView
+            android:id="@+id/custom_brick_header_part_1"
+            android:text=""
+            style="@style/BrickText.SingleLine"/>
+        <TextView
+            android:id="@+id/custom_brick_formula_1"
+            android:visibility="gone"
+            style="@style/BrickEditText"/>
+        <Spinner
+            android:id="@+id/custom_brick_spinner_1"
+            android:visibility="gone"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+        <TextView
+            android:id="@+id/custom_brick_header_part_2"
+            android:text=""
+            style="@style/BrickText.SingleLine"/>
+    </org.catrobat.catroid.ui.BrickLayout>
+</LinearLayout>

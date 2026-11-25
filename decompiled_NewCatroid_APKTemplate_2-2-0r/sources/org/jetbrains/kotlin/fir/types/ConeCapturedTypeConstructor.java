@@ -1,0 +1,44 @@
+package org.jetbrains.kotlin.fir.types;
+
+import java.util.List;
+import kotlin.Metadata;
+import kotlin.jvm.internal.DefaultConstructorMarker;
+import kotlin.jvm.internal.Intrinsics;
+import org.jetbrains.kotlin.types.model.CapturedTypeConstructorMarker;
+import org.jetbrains.kotlin.types.model.TypeParameterMarker;
+
+/* JADX INFO: compiled from: ConeTypes.kt */
+/* JADX INFO: loaded from: classes4.dex */
+@Metadata(d1 = {"\u0000\"\n\u0002\u0018\u0002\n\u0002\u0018\u0002\n\u0000\n\u0002\u0018\u0002\n\u0000\n\u0002\u0010 \n\u0002\u0018\u0002\n\u0000\n\u0002\u0018\u0002\n\u0002\b\n\u0018\u00002\u00020\u0001B+\u0012\u0006\u0010\u0002\u001a\u00020\u0003\u0012\u0010\b\u0002\u0010\u0004\u001a\n\u0012\u0004\u0012\u00020\u0006\u0018\u00010\u0005\u0012\n\b\u0002\u0010\u0007\u001a\u0004\u0018\u00010\b¢\u0006\u0002\u0010\tR\u0011\u0010\u0002\u001a\u00020\u0003¢\u0006\b\n\u0000\u001a\u0004\b\n\u0010\u000bR\"\u0010\u0004\u001a\n\u0012\u0004\u0012\u00020\u0006\u0018\u00010\u0005X\u0086\u000e¢\u0006\u000e\n\u0000\u001a\u0004\b\f\u0010\r\"\u0004\b\u000e\u0010\u000fR\u0013\u0010\u0007\u001a\u0004\u0018\u00010\b¢\u0006\b\n\u0000\u001a\u0004\b\u0010\u0010\u0011¨\u0006\u0012"}, d2 = {"Lorg/jetbrains/kotlin/fir/types/ConeCapturedTypeConstructor;", "Lorg/jetbrains/kotlin/types/model/CapturedTypeConstructorMarker;", "projection", "Lorg/jetbrains/kotlin/fir/types/ConeTypeProjection;", "supertypes", "", "Lorg/jetbrains/kotlin/fir/types/ConeKotlinType;", "typeParameterMarker", "Lorg/jetbrains/kotlin/types/model/TypeParameterMarker;", "(Lorg/jetbrains/kotlin/fir/types/ConeTypeProjection;Ljava/util/List;Lorg/jetbrains/kotlin/types/model/TypeParameterMarker;)V", "getProjection", "()Lorg/jetbrains/kotlin/fir/types/ConeTypeProjection;", "getSupertypes", "()Ljava/util/List;", "setSupertypes", "(Ljava/util/List;)V", "getTypeParameterMarker", "()Lorg/jetbrains/kotlin/types/model/TypeParameterMarker;", "cones"}, k = 1, mv = {1, 9, 0}, xi = 48)
+public final class ConeCapturedTypeConstructor implements CapturedTypeConstructorMarker {
+    private final ConeTypeProjection projection;
+    private List<? extends ConeKotlinType> supertypes;
+    private final TypeParameterMarker typeParameterMarker;
+
+    public ConeCapturedTypeConstructor(ConeTypeProjection projection, List<? extends ConeKotlinType> list, TypeParameterMarker typeParameterMarker) {
+        Intrinsics.checkNotNullParameter(projection, "projection");
+        this.projection = projection;
+        this.supertypes = list;
+        this.typeParameterMarker = typeParameterMarker;
+    }
+
+    public /* synthetic */ ConeCapturedTypeConstructor(ConeTypeProjection coneTypeProjection, List list, TypeParameterMarker typeParameterMarker, int i, DefaultConstructorMarker defaultConstructorMarker) {
+        this(coneTypeProjection, (i & 2) != 0 ? null : list, (i & 4) != 0 ? null : typeParameterMarker);
+    }
+
+    public final ConeTypeProjection getProjection() {
+        return this.projection;
+    }
+
+    public final List<ConeKotlinType> getSupertypes() {
+        return this.supertypes;
+    }
+
+    public final void setSupertypes(List<? extends ConeKotlinType> list) {
+        this.supertypes = list;
+    }
+
+    public final TypeParameterMarker getTypeParameterMarker() {
+        return this.typeParameterMarker;
+    }
+}

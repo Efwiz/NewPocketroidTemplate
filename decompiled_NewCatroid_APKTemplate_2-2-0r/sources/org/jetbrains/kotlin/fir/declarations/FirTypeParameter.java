@@ -1,0 +1,81 @@
+package org.jetbrains.kotlin.fir.declarations;
+
+import androidx.exifinterface.media.ExifInterface;
+import com.google.firebase.analytics.FirebaseAnalytics;
+import java.util.List;
+import kotlin.Metadata;
+import kotlin.jvm.internal.Intrinsics;
+import org.eclipse.jgit.lib.Constants;
+import org.jetbrains.kotlin.KtSourceElement;
+import org.jetbrains.kotlin.fir.FirElement;
+import org.jetbrains.kotlin.fir.FirModuleData;
+import org.jetbrains.kotlin.fir.expressions.FirAnnotation;
+import org.jetbrains.kotlin.fir.symbols.FirBasedSymbol;
+import org.jetbrains.kotlin.fir.symbols.impl.FirTypeParameterSymbol;
+import org.jetbrains.kotlin.fir.types.FirTypeRef;
+import org.jetbrains.kotlin.fir.visitors.FirTransformer;
+import org.jetbrains.kotlin.fir.visitors.FirVisitor;
+import org.jetbrains.kotlin.name.Name;
+import org.jetbrains.kotlin.types.Variance;
+import org.mozilla.javascript.NativeSymbol;
+
+/* JADX INFO: compiled from: FirTypeParameter.kt */
+/* JADX INFO: loaded from: classes4.dex */
+@Metadata(d1 = {"\u0000\u008a\u0001\n\u0002\u0018\u0002\n\u0002\u0018\u0002\n\u0002\u0018\u0002\n\u0002\b\u0002\n\u0002\u0010 \n\u0002\u0018\u0002\n\u0002\b\u0003\n\u0002\u0018\u0002\n\u0002\b\u0003\n\u0002\u0018\u0002\n\u0002\b\u0002\n\u0002\u0018\u0002\n\u0002\b\u0003\n\u0002\u0010\u000b\n\u0002\b\u0002\n\u0002\u0018\u0002\n\u0002\b\u0003\n\u0002\u0018\u0002\n\u0002\b\u0003\n\u0002\u0018\u0002\n\u0002\b\u0003\n\u0002\u0018\u0002\n\u0002\b\u0003\n\u0002\u0018\u0002\n\u0002\b\u0003\n\u0002\u0018\u0002\n\u0002\b\u0006\n\u0002\u0018\u0002\n\u0002\b\u0003\n\u0002\u0010\u0002\n\u0002\b\u0005\n\u0002\u0018\u0002\n\u0000\n\u0002\u0018\u0002\n\u0002\b\u0004\b&\u0018\u00002\u00020\u00012\u00020\u0002B\u0005¢\u0006\u0002\u0010\u0003J5\u0010/\u001a\u0002H0\"\u0004\b\u0000\u00100\"\u0004\b\u0001\u001012\u0012\u00102\u001a\u000e\u0012\u0004\u0012\u0002H0\u0012\u0004\u0012\u0002H1032\u0006\u00104\u001a\u0002H1H\u0016¢\u0006\u0002\u00105J\u0016\u00106\u001a\u0002072\f\u00108\u001a\b\u0012\u0004\u0012\u00020\u00060\u0005H&J\u0016\u00109\u001a\u0002072\f\u0010:\u001a\b\u0012\u0004\u0012\u00020\u000e0\u0005H&J3\u0010;\u001a\u0002H<\"\b\b\u0000\u0010<*\u00020=\"\u0004\b\u0001\u001012\f\u0010>\u001a\b\u0012\u0004\u0012\u0002H10?2\u0006\u00104\u001a\u0002H1H\u0016¢\u0006\u0002\u0010@J)\u0010A\u001a\u00020\u0000\"\u0004\b\u0000\u001012\f\u0010>\u001a\b\u0012\u0004\u0012\u0002H10?2\u0006\u00104\u001a\u0002H1H&¢\u0006\u0002\u0010BR\u0018\u0010\u0004\u001a\b\u0012\u0004\u0012\u00020\u00060\u0005X¦\u0004¢\u0006\u0006\u001a\u0004\b\u0007\u0010\bR\u0012\u0010\t\u001a\u00020\nX¦\u0004¢\u0006\u0006\u001a\u0004\b\u000b\u0010\fR\u0018\u0010\r\u001a\b\u0012\u0004\u0012\u00020\u000e0\u0005X¦\u0004¢\u0006\u0006\u001a\u0004\b\u000f\u0010\bR\u0016\u0010\u0010\u001a\u0006\u0012\u0002\b\u00030\u0011X¦\u0004¢\u0006\u0006\u001a\u0004\b\u0012\u0010\u0013R\u0012\u0010\u0014\u001a\u00020\u0015X¦\u0004¢\u0006\u0006\u001a\u0004\b\u0014\u0010\u0016R\u0012\u0010\u0017\u001a\u00020\u0018X¦\u0004¢\u0006\u0006\u001a\u0004\b\u0019\u0010\u001aR\u0012\u0010\u001b\u001a\u00020\u001cX¦\u0004¢\u0006\u0006\u001a\u0004\b\u001d\u0010\u001eR\u0012\u0010\u001f\u001a\u00020 X¦\u0004¢\u0006\u0006\u001a\u0004\b!\u0010\"R\u0014\u0010#\u001a\u0004\u0018\u00010$X¦\u0004¢\u0006\u0006\u001a\u0004\b%\u0010&R\u0012\u0010'\u001a\u00020(X¦\u0004¢\u0006\u0006\u001a\u0004\b)\u0010*R\u0012\u0010+\u001a\u00020,X¦\u0004¢\u0006\u0006\u001a\u0004\b-\u0010.¨\u0006C"}, d2 = {"Lorg/jetbrains/kotlin/fir/declarations/FirTypeParameter;", "Lorg/jetbrains/kotlin/fir/declarations/FirTypeParameterRef;", "Lorg/jetbrains/kotlin/fir/declarations/FirDeclaration;", "()V", "annotations", "", "Lorg/jetbrains/kotlin/fir/expressions/FirAnnotation;", "getAnnotations", "()Ljava/util/List;", "attributes", "Lorg/jetbrains/kotlin/fir/declarations/FirDeclarationAttributes;", "getAttributes", "()Lorg/jetbrains/kotlin/fir/declarations/FirDeclarationAttributes;", "bounds", "Lorg/jetbrains/kotlin/fir/types/FirTypeRef;", "getBounds", "containingDeclarationSymbol", "Lorg/jetbrains/kotlin/fir/symbols/FirBasedSymbol;", "getContainingDeclarationSymbol", "()Lorg/jetbrains/kotlin/fir/symbols/FirBasedSymbol;", "isReified", "", "()Z", "moduleData", "Lorg/jetbrains/kotlin/fir/FirModuleData;", "getModuleData", "()Lorg/jetbrains/kotlin/fir/FirModuleData;", "name", "Lorg/jetbrains/kotlin/name/Name;", "getName", "()Lorg/jetbrains/kotlin/name/Name;", "origin", "Lorg/jetbrains/kotlin/fir/declarations/FirDeclarationOrigin;", "getOrigin", "()Lorg/jetbrains/kotlin/fir/declarations/FirDeclarationOrigin;", FirebaseAnalytics.Param.SOURCE, "Lorg/jetbrains/kotlin/KtSourceElement;", "getSource", "()Lorg/jetbrains/kotlin/KtSourceElement;", NativeSymbol.TYPE_NAME, "Lorg/jetbrains/kotlin/fir/symbols/impl/FirTypeParameterSymbol;", "getSymbol", "()Lorg/jetbrains/kotlin/fir/symbols/impl/FirTypeParameterSymbol;", "variance", "Lorg/jetbrains/kotlin/types/Variance;", "getVariance", "()Lorg/jetbrains/kotlin/types/Variance;", "accept", "R", "D", "visitor", "Lorg/jetbrains/kotlin/fir/visitors/FirVisitor;", "data", "(Lorg/jetbrains/kotlin/fir/visitors/FirVisitor;Ljava/lang/Object;)Ljava/lang/Object;", "replaceAnnotations", "", "newAnnotations", "replaceBounds", "newBounds", "transform", ExifInterface.LONGITUDE_EAST, "Lorg/jetbrains/kotlin/fir/FirElement;", "transformer", "Lorg/jetbrains/kotlin/fir/visitors/FirTransformer;", "(Lorg/jetbrains/kotlin/fir/visitors/FirTransformer;Ljava/lang/Object;)Lorg/jetbrains/kotlin/fir/FirElement;", "transformAnnotations", "(Lorg/jetbrains/kotlin/fir/visitors/FirTransformer;Ljava/lang/Object;)Lorg/jetbrains/kotlin/fir/declarations/FirTypeParameter;", Constants.TYPE_TREE}, k = 1, mv = {1, 9, 0}, xi = 48)
+public abstract class FirTypeParameter extends FirDeclaration implements FirTypeParameterRef {
+    @Override // org.jetbrains.kotlin.fir.declarations.FirDeclaration, org.jetbrains.kotlin.fir.FirAnnotationContainer
+    public abstract List<FirAnnotation> getAnnotations();
+
+    @Override // org.jetbrains.kotlin.fir.declarations.FirDeclaration
+    public abstract FirDeclarationAttributes getAttributes();
+
+    public abstract List<FirTypeRef> getBounds();
+
+    public abstract FirBasedSymbol<?> getContainingDeclarationSymbol();
+
+    @Override // org.jetbrains.kotlin.fir.declarations.FirDeclaration, org.jetbrains.kotlin.fir.FirElementWithResolveState
+    public abstract FirModuleData getModuleData();
+
+    public abstract Name getName();
+
+    @Override // org.jetbrains.kotlin.fir.declarations.FirDeclaration
+    public abstract FirDeclarationOrigin getOrigin();
+
+    @Override // org.jetbrains.kotlin.fir.declarations.FirDeclaration, org.jetbrains.kotlin.fir.FirElementWithResolveState, org.jetbrains.kotlin.fir.FirElement
+    public abstract KtSourceElement getSource();
+
+    @Override // org.jetbrains.kotlin.fir.declarations.FirDeclaration
+    public abstract FirTypeParameterSymbol getSymbol();
+
+    public abstract Variance getVariance();
+
+    public abstract boolean isReified();
+
+    @Override // org.jetbrains.kotlin.fir.declarations.FirDeclaration, org.jetbrains.kotlin.fir.FirAnnotationContainer
+    public abstract void replaceAnnotations(List<? extends FirAnnotation> newAnnotations);
+
+    public abstract void replaceBounds(List<? extends FirTypeRef> newBounds);
+
+    @Override // org.jetbrains.kotlin.fir.declarations.FirDeclaration, org.jetbrains.kotlin.fir.FirAnnotationContainer
+    public abstract <D> FirTypeParameter transformAnnotations(FirTransformer<? super D> transformer, D data);
+
+    public FirTypeParameter() {
+        super(null);
+    }
+
+    /* JADX WARN: Multi-variable type inference failed */
+    @Override // org.jetbrains.kotlin.fir.declarations.FirDeclaration, org.jetbrains.kotlin.fir.FirElementWithResolveState, org.jetbrains.kotlin.fir.FirElement
+    public <R, D> R accept(FirVisitor<? extends R, ? super D> visitor, D data) {
+        Intrinsics.checkNotNullParameter(visitor, "visitor");
+        return visitor.visitTypeParameter(this, data);
+    }
+
+    /* JADX WARN: Multi-variable type inference failed */
+    @Override // org.jetbrains.kotlin.fir.declarations.FirDeclaration, org.jetbrains.kotlin.fir.FirElementWithResolveState, org.jetbrains.kotlin.fir.FirElement
+    public <E extends FirElement, D> E transform(FirTransformer<? super D> transformer, D data) {
+        Intrinsics.checkNotNullParameter(transformer, "transformer");
+        FirTypeParameterRef firTypeParameterRefTransformTypeParameter = transformer.transformTypeParameter(this, data);
+        Intrinsics.checkNotNull(firTypeParameterRefTransformTypeParameter, "null cannot be cast to non-null type E of org.jetbrains.kotlin.fir.declarations.FirTypeParameter.transform");
+        return firTypeParameterRefTransformTypeParameter;
+    }
+}

@@ -1,0 +1,47 @@
+package org.jetbrains.kotlin.resolve.calls.inference.model;
+
+import java.util.List;
+import kotlin.Metadata;
+import kotlin.jvm.functions.Function4;
+import kotlin.jvm.internal.FunctionReference;
+import kotlin.jvm.internal.Intrinsics;
+import kotlin.jvm.internal.Reflection;
+import kotlin.reflect.KDeclarationContainer;
+import org.jetbrains.kotlin.types.EmptyIntersectionTypeKind;
+import org.jetbrains.kotlin.types.model.KotlinTypeMarker;
+import org.jetbrains.kotlin.types.model.TypeVariableMarker;
+
+/* JADX INFO: compiled from: NewConstraintSystemImpl.kt */
+/* JADX INFO: loaded from: classes6.dex */
+@Metadata(k = 3, mv = {1, 9, 0}, xi = 48)
+/* synthetic */ class NewConstraintSystemImpl$checkInferredEmptyIntersection$errorFactory$2 extends FunctionReference implements Function4<List<? extends KotlinTypeMarker>, List<? extends KotlinTypeMarker>, TypeVariableMarker, EmptyIntersectionTypeKind, InferredEmptyIntersectionWarning> {
+    public static final NewConstraintSystemImpl$checkInferredEmptyIntersection$errorFactory$2 INSTANCE = new NewConstraintSystemImpl$checkInferredEmptyIntersection$errorFactory$2();
+
+    NewConstraintSystemImpl$checkInferredEmptyIntersection$errorFactory$2() {
+        super(4);
+    }
+
+    @Override // kotlin.jvm.internal.CallableReference
+    public final String getSignature() {
+        return "<init>(Ljava/util/List;Ljava/util/List;Lorg/jetbrains/kotlin/types/model/TypeVariableMarker;Lorg/jetbrains/kotlin/types/EmptyIntersectionTypeKind;)V";
+    }
+
+    @Override // kotlin.jvm.internal.CallableReference, kotlin.reflect.KCallable
+    public final String getName() {
+        return "<init>";
+    }
+
+    @Override // kotlin.jvm.internal.CallableReference
+    public final KDeclarationContainer getOwner() {
+        return Reflection.getOrCreateKotlinClass(InferredEmptyIntersectionWarning.class);
+    }
+
+    @Override // kotlin.jvm.functions.Function4
+    public final InferredEmptyIntersectionWarning invoke(List<? extends KotlinTypeMarker> p0, List<? extends KotlinTypeMarker> p1, TypeVariableMarker p2, EmptyIntersectionTypeKind p3) {
+        Intrinsics.checkNotNullParameter(p0, "p0");
+        Intrinsics.checkNotNullParameter(p1, "p1");
+        Intrinsics.checkNotNullParameter(p2, "p2");
+        Intrinsics.checkNotNullParameter(p3, "p3");
+        return new InferredEmptyIntersectionWarning(p0, p1, p2, p3);
+    }
+}

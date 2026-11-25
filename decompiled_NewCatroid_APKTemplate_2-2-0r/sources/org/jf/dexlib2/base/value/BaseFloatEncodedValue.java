@@ -1,0 +1,33 @@
+package org.jf.dexlib2.base.value;
+
+import org.jf.dexlib2.formatter.DexFormatter;
+import org.jf.dexlib2.iface.value.EncodedValue;
+import org.jf.dexlib2.iface.value.FloatEncodedValue;
+
+/* JADX INFO: loaded from: classes6.dex */
+public abstract class BaseFloatEncodedValue implements FloatEncodedValue {
+    @Override // org.jf.dexlib2.iface.value.EncodedValue
+    public int getValueType() {
+        return 16;
+    }
+
+    @Override // org.jf.dexlib2.iface.value.FloatEncodedValue
+    public int hashCode() {
+        return Float.floatToRawIntBits(getValue());
+    }
+
+    @Override // org.jf.dexlib2.iface.value.FloatEncodedValue
+    public boolean equals(Object obj) {
+        return obj != null && (obj instanceof FloatEncodedValue) && Float.floatToRawIntBits(getValue()) == Float.floatToRawIntBits(((FloatEncodedValue) obj).getValue());
+    }
+
+    @Override // org.jf.dexlib2.iface.value.FloatEncodedValue, java.lang.Comparable
+    public int compareTo(EncodedValue encodedValue) {
+        int iCompare = Integer.compare(getValueType(), encodedValue.getValueType());
+        return iCompare != 0 ? iCompare : Float.compare(getValue(), ((FloatEncodedValue) encodedValue).getValue());
+    }
+
+    public String toString() {
+        return DexFormatter.INSTANCE.getEncodedValue(this);
+    }
+}

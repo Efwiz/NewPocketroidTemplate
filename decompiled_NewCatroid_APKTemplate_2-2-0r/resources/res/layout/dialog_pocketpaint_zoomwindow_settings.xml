@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:padding="?attr/dialogPreferredPadding"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+    <com.google.android.material.switchmaterial.SwitchMaterial
+        android:theme="@style/CustomSwitchTheme"
+        android:textColor="@color/design_default_color_on_secondary"
+        android:id="@+id/pocketpaint_zoom_window_enabled"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:checked="true"
+        android:text="@string/dialog_zoom_window_enabled"/>
+    <Space
+        android:layout_width="0dp"
+        android:layout_height="16dp"/>
+    <LinearLayout
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <TextView
+            android:id="@+id/pocketpaint_zoom_window_slider_progress"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+        <com.google.android.material.slider.Slider
+            android:value="@string/dialog_zoom_window_initial_value"
+            android:id="@+id/pocketpaint_zoom_window_slider"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:stepSize="50"
+            android:valueFrom="@string/dialog_zoom_window_from_size"
+            android:valueTo="@string/dialog_zoom_window_to_size"
+            app:haloColor="@color/pocketpaint_colorAccent"
+            app:thumbColor="@color/pocketpaint_colorAccent"
+            app:trackColorActive="@color/pocketpaint_colorAccent"/>
+    </LinearLayout>
+</LinearLayout>

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TextView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:textSize="24sp"
+    android:textColor="@color/solid_black"
+    android:gravity="center"
+    android:background="@drawable/pocketmusic_fastscroller_bubble"
+    android:visibility="invisible"
+    android:layout_width="64dp"
+    android:layout_height="64dp"
+    android:layout_margin="1dp"
+    android:elevation="2dp"/>
