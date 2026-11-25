@@ -22,12 +22,11 @@ jobs:
           gh release download --pattern "*.apk"
 
       - name: Установить JADX
-        env:
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          gh release download --repo skylot/jadx --pattern "jadx-*.zip"
-          unzip -q jadx-*.zip -d jadx
+          curl -fL https://github.com/skylot/jadx/releases/download/v1.5.6/jadx-1.5.6.zip -o jadx.zip
+          unzip -q jadx.zip -d jadx
           chmod +x jadx/bin/jadx
+          rm -f jadx.zip
 
       - name: Декомпилировать APK
         env:
@@ -38,12 +37,14 @@ jobs:
             ./jadx/bin/jadx -d "decompiled_${file%.apk}" "$file" || true
           done
           rm -f *.apk
+          rm -rf jadx
           find decompiled_* -type f -size +95M -delete
 
       - name: Сохранить код в main
         run: |
           git config --local user.email "action@github.com"
           git config --local user.name "GitHub Action"
+          git config http.postBuffer 524288000
           git add decompiled_*
           git commit -m "Декомпиляция APK" || exit 0
           git push
